@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Receipt implements Serializable {
 	@Id
-	private int id;
+	private int receiptId;
 	private Byte[] image;
 	private double amount;
 	

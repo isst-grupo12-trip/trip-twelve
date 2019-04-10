@@ -13,4 +13,29 @@ public class Receipt implements Serializable {
 	public Receipt() {
 		
 	}
+
+	public int getReceiptId() {
+		return receiptId;
+	}
+
+	public void setReceiptId(int receiptId) {
+		this.receiptId = receiptId;
+	}
+
+	public Byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(Byte[] image) {
+		this.image = image;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+	
 }

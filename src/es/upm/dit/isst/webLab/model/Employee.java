@@ -16,5 +16,45 @@ public class Employee implements Serializable{
 	public Employee() {
 		
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(String supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public Collection<Trip> getTrips() {
+		return trips;
+	}
+
+	public void setTrips(Collection<Trip> trips) {
+		this.trips = trips;
+	}
 	
 }

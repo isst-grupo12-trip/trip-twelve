@@ -26,9 +26,9 @@
 			</p>
 			<p>
 				Fecha de Ida: <input type="text" name="startDate" />
-			</p>
+			</p>	
 			<p>
-				Fecha de Vuelta: <input type="password" name="endDate" />
+				Fecha de Vuelta: <input type=text name="endDate" />
 			</p>
 			<p>
 				Motivo del viaje: <input type="text" name="motive" />

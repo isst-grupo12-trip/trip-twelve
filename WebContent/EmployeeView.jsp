@@ -14,7 +14,7 @@
     Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
 </shiro:user>
 <hr>
-	<h2>Vista de administrador</h2>
+	<h2>Vista de empleado</h2>
 	<shiro:lacksRole name="employee">
 	No tienes permiso para ver el contenido de esta página
 </shiro:lacksRole>
@@ -42,38 +42,38 @@
 		</form>
 		
 		<h3>Listado de Viajes</h3>
-<!-- 		<table border="1"> -->
-<!-- 			<tr> -->
-<!-- 				<th>Destino</th> -->
-<!-- 				<th>Fecha de Ida</th> -->
-<!-- 				<th>Fecha de Vuelta</th> -->
-<!-- 				<th>Motivo del viaje</th> -->
-<!-- 				<th>Importe Esperado</th> -->
-<!-- 				<th>Acción requerida</th> -->
-<!-- 			</tr> -->
-<%-- 			<c:forEach items="${tfg_list}" var="tfgi"> --%>
-<!-- 				<tr> -->
-<%-- 					<td>${tfgi.title }</td> --%>
-<%-- 					<td>${tfgi.email }</td> --%>
-<%-- 					<td>${tfgi.name }</td> --%>
-<%-- 					<td>${tfgi.advisor.email }</td> --%>
-<%-- 					<td>${tfgi.advisor.name }</td> --%>
-<%-- 					<td>${tfgi.status }</td> --%>
-<%-- 					<td><c:if test="${tfgi.status > 3}"> --%>
-<!-- 							<form action="ServeFileServlet"> -->
-<%-- 								<input type="hidden" name="email" value="${tfgi.email}" /> --%>
-<!-- 								<button type="submit">Descargar</button> -->
-<!-- 							</form> -->
-<%-- 						</c:if></td> --%>
-<%-- 					<td><c:if test="${tfgi.status == 2}"> --%>
-<!-- 							<form action="Form3SecretaryServlet" method="post"> -->
-<%-- 								<input type="hidden" name="email" value="${tfgi.email}" /> --%>
-<!-- 								<button type="submit">Aceptar tfg</button> -->
-<!-- 							</form> -->
-<%-- 						</c:if></td> --%>
-<!-- 				</tr> -->
-<%-- 			</c:forEach> --%>
-<!-- 		</table>		 -->
+ 		<table border="1">
+			<tr> 
+				<th>Destino</th>
+				<th>Fecha de Ida</th>
+ 				<th>Fecha de Vuelta</th> 
+				<th>Motivo del viaje</th> 
+				<th>Importe Esperado</th> 
+ 				<th>Acción requerida</th> 
+ 			</tr>
+ 			<c:forEach items="${trip_list}" var="tripi"> 
+ 				<tr> 
+					<td>${tripi.destiny }</td> 
+ 					<td>${tripi.startDate }</td> 
+ 					<td>${tripi.endDate }</td> 
+ 					<td>${tripi.motive }</td>
+					<td>${tripi.amount }</td> 
+ 					<!-- Falta añadir la acción requerida -->
+ 					<td><c:if test="${tripi.status > 3}"> 
+ 							<form action="ServeFileServlet">
+ 								<input type="hidden" name="email" value="${tfgi.email}" /> 
+								<button type="submit">Descargar</button>
+							</form> 
+ 						</c:if></td>
+					<td><c:if test="${tripi.status == 2}"> 
+							<form action="Form3SecretaryServlet" method="post">
+ 								<input type="hidden" name="email" value="${tfgi.email}" /> 
+								<button type="submit">Aceptar tfg</button> 
+ 							</form> 
+ 						</c:if></td> 
+ 				</tr> 
+ 			</c:forEach> 
+ 		</table>		 
 	</shiro:hasRole>
 </body>
 </html>

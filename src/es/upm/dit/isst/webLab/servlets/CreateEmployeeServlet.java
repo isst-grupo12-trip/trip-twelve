@@ -21,7 +21,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 		String name = req.getParameter( "name" );
 		String password = req.getParameter( "password" );
 		String email = req.getParameter( "email" );
-		String supervisor = req.getParameter( "supervisor" );
+		String supervisor = req.getParameter( "supervisorEmail" );
 		
 		Employee employee = new Employee();
 		employee.setName( name );

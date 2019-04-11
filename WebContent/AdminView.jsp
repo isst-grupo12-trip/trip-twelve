@@ -127,7 +127,14 @@
 				Nombre: <input type="text" name="name" />
 			</p>
 			<p>
-				Supervisor: <input type="text" name="supervisor"/>
+				Supervisor: <select name="supervisorEmail">
+					<option value="" disabled selected>Elija un supervisor</option>
+					<c:forEach items="${ employee_list }" var="supervisori">
+						<option value="${ supervisori.email }">
+							${ supervisori.name }-${ supervisori.email }
+						</option>
+					</c:forEach>
+				</select>
 			</p>
 			<p>
 				<button type="submit">Crear empleado</button>

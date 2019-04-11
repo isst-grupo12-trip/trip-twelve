@@ -73,11 +73,11 @@ public class Trip implements Serializable{
 		this.state = state;
 	}
 
-	public String getTraveller() {
+	public Employee getTraveller() {
 		return traveller;
 	}
 
-	public void setTraveller(String traveller) {
+	public void setTraveller(Employee traveller) {
 		this.traveller = traveller;
 	}
 

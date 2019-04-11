@@ -15,7 +15,7 @@ public class Trip implements Serializable{
 	private Date endDate;
 	private String motive;
 	private String state;
-	private String traveller;
+	private Employee traveller;
 
 	private double amount;
 	@OneToMany

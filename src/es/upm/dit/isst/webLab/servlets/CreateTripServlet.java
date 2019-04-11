@@ -1,6 +1,7 @@
 package es.upm.dit.isst.webLab.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,8 +25,18 @@ public class CreateTripServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String destiny = req.getParameter( "destination" );
-		Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "startDate" ));
-		Date endDate =  new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "endDate" ));
+		Date startDate = null;
+		try {
+			startDate = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "startDate" ));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		Date endDate = null;
+		try {
+			endDate = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "endDate" ));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		String motive = req.getParameter("motive");
 		Double amount = Double.parseDouble(req.getParameter("amount"));
 		Trip trip = new Trip();

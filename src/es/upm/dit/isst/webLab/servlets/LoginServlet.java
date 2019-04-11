@@ -12,6 +12,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
+import es.upm.dit.isst.webLab.dao.EmployeeDAO;
+import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
 import es.upm.dit.isst.webLab.dao.ProfessorDAO;
 import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
 
@@ -20,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfessorDAO pdao = ProfessorDAOImplementation.getInstance();
+//		EmployeeDAO pdao = EmployeeDAOImplementation.getInstance();
 		req.getSession().setAttribute( "professor_list", pdao.readAll() );
 		getServletContext().getRequestDispatcher( "/LoginView.jsp" ).forward( req, resp );
 	}

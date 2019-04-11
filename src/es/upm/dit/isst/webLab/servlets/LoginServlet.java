@@ -37,6 +37,8 @@ public class LoginServlet extends HttpServlet {
 					resp.sendRedirect( req.getContextPath() + "/AdminServlet" );
 				else if ( currentUser.hasRole( "professor" ) )
 					resp.sendRedirect( req.getContextPath() + "/ProfessorServlet?email=" + currentUser.getPrincipal() );
+				else if ( currentUser.hasRole( "employee" ) )
+					resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + currentUser.getPrincipal() );
 				else
 					resp.sendRedirect( req.getContextPath() + "/TFGServlet?email=" + currentUser.getPrincipal() );
 			} catch ( Exception e ) {

@@ -12,6 +12,8 @@ import es.upm.dit.isst.webLab.dao.ProfessorDAO;
 import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
 import es.upm.dit.isst.webLab.dao.TFGDAO;
 import es.upm.dit.isst.webLab.dao.TFGDAOImplementation;
+import es.upm.dit.isst.webLab.dao.EmployeeDAO;
+import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
 
 @WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
@@ -23,6 +25,9 @@ public class AdminServlet extends HttpServlet {
 		req.getSession().setAttribute( "professor_list", pdao.readAll() );
 		TFGDAO tdao = TFGDAOImplementation.getInstance();
 		req.getSession().setAttribute( "tfg_list", tdao.readAll() );
+		
+		EmployeeDAO edao = EmployeeDAOImplementation.getInstance();
+		req.getSession().setAttribute( "employee_list", edao.readAll());
 		
 		getServletContext().getRequestDispatcher( "/AdminView.jsp" ).forward( req, resp );
 	}

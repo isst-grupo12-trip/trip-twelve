@@ -19,7 +19,7 @@
 	No tienes permiso para ver el contenido de esta página
 </shiro:lacksRole>
 	<shiro:hasRole name="admin">
-		<h3>Crear profesor nuevo</h3>
+		<!--  <h3>Crear profesor nuevo</h3>
 		<form action="CreateProfessorServlet" method="post">
 			<p>
 				Nombre: <input type="text" name="name" />
@@ -114,7 +114,40 @@
 						</c:if></td>
 				</tr>
 			</c:forEach>
-		</table>		
+		</table> -->
+		<h3>Crear nuevo empleado</h3>
+		<form action="CreateEmployeeServlet" method="post">
+			<p>
+				Email: <input type="text" name="email" />
+			</p>
+			<p>
+				Password: <input type="password" name="password" />
+			</p>
+			<p>
+				Nombre: <input type="text" name="name" />
+			</p>
+			<p>
+				Supervisor: <input type="text" name="supervisor"/>
+			</p>
+			<p>
+				<button type="submit">Crear empleado</button>
+			</p>
+		</form>
+		<h3>Listado de empleados</h3>
+		<table border="1">
+			<tr>
+				<th>Nombre</th>
+				<th>Email</th>
+				<th>Supervisor</th>
+			</tr>
+			<c:forEach items="${employee_list}" var="employeei">
+				<tr>
+					<td>${employeei.name }</td>
+					<td>${employeei.email }</td>
+					<td>${employeei.supervisor }</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</shiro:hasRole>
 </body>
 </html>

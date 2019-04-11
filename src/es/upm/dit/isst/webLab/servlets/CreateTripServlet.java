@@ -38,7 +38,12 @@ public class CreateTripServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		String motive = req.getParameter("motive");
-		Double amount = Double.parseDouble(req.getParameter("amount"));
+		Double amount = -1.0;
+		try {
+			amount = Double.parseDouble(req.getParameter("amount"));
+		} catch (NullPointerException | NumberFormatException e) {
+			e.printStackTrace();
+		}
 		Trip trip = new Trip();
 		trip.setDestiny(destiny);
 		trip.setAmount(amount);

@@ -64,7 +64,7 @@ public class CreateTripServlet extends HttpServlet {
 		TripDAO tdao = TripDAOImplementation.getInstance();
 		tdao.create( trip );
 		
-		getServletContext().getRequestDispatcher("/EmployeeView.jsp").forward(req, resp);
+		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet" );
 	}
 
 }

@@ -56,7 +56,7 @@ public class CreateTripServlet extends HttpServlet {
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 		trip.setMotive(motive);
-		trip.setState(1);
+		trip.setState(0);
 		trip.setTraveller(traveller);
 		trip.setTripId(0);
 		
@@ -64,7 +64,7 @@ public class CreateTripServlet extends HttpServlet {
 		TripDAO tdao = TripDAOImplementation.getInstance();
 		tdao.create( trip );
 		
-		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet" );
+		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + email );
 	}
 
 }

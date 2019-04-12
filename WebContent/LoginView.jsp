@@ -14,9 +14,9 @@
 </head>
 <body>
 
-	<div class="container" style="background-image: url('https://images.pexels.com/photos/59519/pexels-photo-59519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+	<div class="container-fluid" style="background-image: url('https://images.pexels.com/photos/59519/pexels-photo-59519.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top scrolling-navbar">
-			<div class="container">
+			<div class="container-fluid">
 				<a class="navbar-brand mb-0 h1" href="#">TripTwelve</a>
 			</div>
 		</nav>

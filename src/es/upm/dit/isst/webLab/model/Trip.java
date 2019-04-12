@@ -14,7 +14,7 @@ public class Trip implements Serializable{
 	private Date startDate;
 	private Date endDate;
 	private String motive;
-	private String state;
+	private int state;
 	private Employee traveller;
 
 	private double amount;
@@ -65,11 +65,11 @@ public class Trip implements Serializable{
 		this.motive = motive;
 	}
 
-	public String getState() {
+	public int getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 

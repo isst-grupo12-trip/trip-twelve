@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import es.upm.dit.isst.webLab.dao.EmployeeDAO;
+import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
 import es.upm.dit.isst.webLab.dao.ProfessorDAO;
 import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
 import es.upm.dit.isst.webLab.dao.TripDAO;
 import es.upm.dit.isst.webLab.dao.TripDAOImplementation;
+import es.upm.dit.isst.webLab.model.Employee;
 import es.upm.dit.isst.webLab.model.Professor;
 import es.upm.dit.isst.webLab.model.Trip;
 
@@ -44,12 +46,19 @@ public class CreateTripServlet extends HttpServlet {
 		} catch (NullPointerException | NumberFormatException e) {
 			e.printStackTrace();
 		}
+		String email = req.getParameter( "email" );
+		EmployeeDAO edao = EmployeeDAOImplementation.getInstance();
+		Employee traveller = edao.read(email);
+		
 		Trip trip = new Trip();
 		trip.setDestiny(destiny);
 		trip.setAmount(amount);
 		trip.setStartDate(startDate);
 		trip.setEndDate(endDate);
 		trip.setMotive(motive);
+		trip.setState(1);
+		trip.setTraveller(traveller);
+		trip.setTripId(1); // hay que ver como resolverlo TODO
 		
 		
 		TripDAO tdao = TripDAOImplementation.getInstance();

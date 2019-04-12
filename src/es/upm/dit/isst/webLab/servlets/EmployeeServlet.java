@@ -11,6 +11,8 @@ import java.lang.Integer;
 
 import es.upm.dit.isst.webLab.dao.EmployeeDAO;
 import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
+import es.upm.dit.isst.webLab.dao.TripDAO;
+import es.upm.dit.isst.webLab.dao.TripDAOImplementation;
 
 @WebServlet("/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet {
@@ -21,6 +23,9 @@ public class EmployeeServlet extends HttpServlet {
 		String emailEmployee = req.getParameter("email");
 		
 		req.getSession().setAttribute("employee", edao.read(emailEmployee));
+		
+		TripDAO tdao = TripDAOImplementation.getInstance();
+		req.getSession().setAttribute( "trip_list", tdao.readAll());
 		
 		getServletContext().getRequestDispatcher( "/EmployeeView.jsp" ).forward( req, resp );
 	}

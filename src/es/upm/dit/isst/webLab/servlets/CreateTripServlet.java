@@ -58,7 +58,7 @@ public class CreateTripServlet extends HttpServlet {
 		trip.setMotive(motive);
 		trip.setState(1);
 		trip.setTraveller(traveller);
-		//trip.setTripId(1); hay que ver como resolverlo TODO
+		trip.setTripId(0);
 		
 		
 		TripDAO tdao = TripDAOImplementation.getInstance();

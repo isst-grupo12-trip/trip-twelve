@@ -59,18 +59,19 @@
  					<td>${tripi.motive }</td>
 					<td>${tripi.amount }</td> 
  					<!-- Falta añadir la acción requerida -->
- 					<td><c:if test="${tripi.status > 3}"> 
- 							<form action="ServeFileServlet">
- 								<input type="hidden" name="email" value="${tfgi.email}" /> 
-								<button type="submit">Descargar</button>
-							</form> 
- 						</c:if></td>
-					<td><c:if test="${tripi.status == 2}"> 
-							<form action="Form3SecretaryServlet" method="post">
- 								<input type="hidden" name="email" value="${tfgi.email}" /> 
-								<button type="submit">Aceptar tfg</button> 
- 							</form> 
- 						</c:if></td> 
+<%--  					<td><c:if test="${tripi.status > 3}">  --%>
+<!--  							<form action="ServeFileServlet"> -->
+<%--  								<input type="hidden" name="email" value="${tfgi.email}" />  --%>
+<!-- 								<button type="submit">Descargar</button> -->
+<!-- 							</form>  -->
+<%--  						</c:if></td> --%>
+<%-- 					<td><c:if test="${tripi.status == 2}">  --%>
+<!-- 							<form action="Form3SecretaryServlet" method="post"> -->
+<%--  								<input type="hidden" name="email" value="${tfgi.email}" />  --%>
+<!-- 								<button type="submit">Aceptar tfg</button>  -->
+<!--  							</form>  -->
+<%--  						</c:if> --%>
+<!-- 					</td>  -->
  				</tr> 
  			</c:forEach> 
  		</table>		 

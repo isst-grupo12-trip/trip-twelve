@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Trip implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int tripId;
 	private String destiny;
 	private Date startDate;

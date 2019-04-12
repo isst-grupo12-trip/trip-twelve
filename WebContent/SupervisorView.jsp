@@ -6,41 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employee View</title>
+<title>Supervisor View</title>
 </head>
 <body>
 <shiro:user>
     Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
 </shiro:user>
 <hr>
-	<h2>Vista de empleado</h2>
-	<shiro:lacksRole name="employee">
+	<h2>Vista de supervisor</h2>
+	<shiro:lacksRole name="supervisor">
 	No tienes permiso para ver el contenido de esta página
 </shiro:lacksRole>
-	<shiro:hasRole name="employee">
-		<h3>Crear Viaje nuevo</h3>
-		<form action="CreateTripServlet" method="post">
-			<p>
-				Destino: <input type="text" name="destination" />
-			</p>
-			<p>
-				Fecha de Ida: <input type="text" name="startDate" />
-			</p>	
-			<p>
-				Fecha de Vuelta: <input type=text name="endDate" />
-			</p>
-			<p>
-				Motivo del viaje: <input type="text" name="motive" />
-			</p>
-			<p>
-				Importe Esperado: <input type="text" name="amount" />
-			</p>
-			<input type="hidden" name="email" value="${employee.email}" />			
-			<p>
-				<button type="submit">Crear Viaje</button>
-			</p>
-		</form>
-		
+	<shiro:hasRole name="supervisor">
+			
 		<h3>Listado de Viajes</h3>
  		<table border="1">
 			<tr> 
@@ -58,17 +36,22 @@
  					<td>${tripi.endDate }</td> 
  					<td>${tripi.motive }</td>
 					<td>${tripi.amount }</td> 
- 					<td><c:if test="${tripi.state == 1}"> 
- 							<form action="ForwardStatusServlet">
+<!--  					Falta añadir la acción requerida -->
+ 					<td><c:if test="${tripi.state == 0}"> 
+ 							<form action="ForwardStatusServlet" method="post">
  								<input type="hidden" name="tripId" value="${tripi.tripId}" />
- 								<input type="hidden" name="isSupervisor" value="${false}" /> 
-								<button type="submit">Solicitar reintegro</button>
-							</form>  
+ 								<input type="hidden" name="isSupervisor" value="${true}" />
+								<button type="submit">Aceptar Viaje</button>
+							</form> 
  						</c:if>
- 						<c:if test="${tripi.state == 0}"> 
- 							Pendiente de aceptacion
+						<c:if test="${tripi.state == 2}"> 
+							<form action="ForwardStatusServlet" method="post">
+ 								<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
+ 								<input type="hidden" name="isSupervisor" value="${true}" />
+								<button type="submit">Aceptar Reintegro</button> 
+ 							</form> 
  						</c:if>
-					</td>
+					</td> 
  				</tr> 
  			</c:forEach> 
  		</table>		 

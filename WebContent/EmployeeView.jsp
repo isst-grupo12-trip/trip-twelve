@@ -72,7 +72,7 @@
 					</td>
 					<c:if test="${tripi.state == 1}"> 
 						<td>
- 							<form action="TripServlet" method="post">
+ 							<form action="TripServlet">
  								<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
 								<button type="submit">Ver detalles</button>
 							</form>  

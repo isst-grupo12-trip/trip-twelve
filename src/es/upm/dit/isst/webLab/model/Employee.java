@@ -2,6 +2,9 @@ package es.upm.dit.isst.webLab.model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 @Entity
 public class Employee implements Serializable{
 	@Id
@@ -11,6 +14,7 @@ public class Employee implements Serializable{
 	private String supervisor;
 	
 	@OneToMany(mappedBy = "traveller", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Trip> trips;
 	
 	public Employee() {

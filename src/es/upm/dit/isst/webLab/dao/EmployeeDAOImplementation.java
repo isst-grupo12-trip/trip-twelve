@@ -76,7 +76,7 @@ public class EmployeeDAOImplementation implements EmployeeDAO {
 		Collection<Employee> employees = null;
 		try {
 			session.beginTransaction();
-			employees = session.createQuery("select * from Employee").list();
+			employees = session.createQuery("from Employee").list();
 			session.getTransaction().commit();
 		} catch (Exception e){
 			//mensaje error

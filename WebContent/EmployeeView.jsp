@@ -89,6 +89,7 @@
 								</form>
 							</c:if> <c:if test="${tripi.state == 0}"> 
  							Pendiente de aceptacion
+
  						</c:if></td>
 						<c:if test="${tripi.state == 1}">
 							<td>
@@ -116,5 +117,21 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 	</div>
+
+ 						</c:if>
+					</td>
+					<c:if test="${tripi.state == 1}"> 
+						<td>
+ 							<form action="TripServlet">
+ 								<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
+								<button type="submit">Ver detalles</button>
+							</form>  
+						</td>
+ 					</c:if>
+ 				</tr> 
+ 			</c:forEach> 
+ 		</table>		 
+	</shiro:hasRole>
+
 </body>
 </html>

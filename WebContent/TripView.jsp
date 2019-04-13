@@ -33,12 +33,15 @@
 		<h3>Crear factura nueva</h3>
 		<form action="CreateReceiptServlet" method="post">
 			<p>
+				Motivo: <input type="text" name="motive" />
+			</p>
+			<p>
 				Comprobante: <button name="image" action="UploadPhoto">Añadir comprobante</button>
 			</p>
 			<p>
-				Importe: <input type="text" name="amount" />
+				Importe: <input type="number" name="amount" />
 			</p>
-			<input type="hidden" name="email" value="${tripId}" />	
+			<input type="hidden" name="tripId" value="${trip.tripId}" />	
 			<p>
 				<button type="submit">Crear factura</button>
 			</p>
@@ -47,37 +50,18 @@
 		<h3>Listado de facturas</h3>
  		<table border="1">
 			<tr> 
+				<th>Motivo</th>
 				<th>Importe</th>
 				<th>Comprobante</th>
  			</tr>
- 			<!-- <c:forEach items="${trip_list}" var="tripi"> 
- 				<tr> 
-					<td>${tripi.destiny }</td> 
- 					<td>${tripi.startDate }</td> 
- 					<td>${tripi.endDate }</td> 
- 					<td>${tripi.motive }</td>
-					<td>${tripi.amount }</td> 
- 					<td><c:if test="${tripi.state == 1}"> 
- 							<form action="ForwardStatusServlet" method="post">
- 								<input type="hidden" name="tripId" value="${tripi.tripId}" />
- 								<input type="hidden" name="isSupervisor" value="${false}" /> 
-								<button type="submit">Solicitar reintegro</button>
-							</form>  
- 						</c:if>
- 						<c:if test="${tripi.state == 0}"> 
- 							Pendiente de aceptacion
- 						</c:if>
-					</td>
-					<c:if test="${tripi.state == 1}"> 
-						<td>
- 							<form action="TripServlet" method="post">
- 								<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
-								<button type="submit">Ver detalles</button>
-							</form>  
-						</td>
- 					</c:if>
- 				</tr> 
- 			</c:forEach> -->
+  			<c:forEach items="${receipt_list}" var="receipti"> 
+  				<tr>
+					<td>${receipti.motive }</td>
+					<td>${receipti.amount }</td>
+ 					<td>${receipti.amount }</td>
+ 					
+  				</tr>
+  			</c:forEach>
  		</table>		 
 	</shiro:hasRole>
 </body>

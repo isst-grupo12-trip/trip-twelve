@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 @Entity
 public class Trip implements Serializable{
 	
@@ -21,7 +24,8 @@ public class Trip implements Serializable{
 	private Employee traveller;
 
 	private double amount;
-	@OneToMany
+	@OneToMany(mappedBy = "trip", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private Collection<Receipt> receipts;
 	
 	public Trip() {

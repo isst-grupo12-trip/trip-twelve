@@ -13,12 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.upm.dit.isst.webLab.dao.EmployeeDAO;
 import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
-import es.upm.dit.isst.webLab.dao.ProfessorDAO;
-import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
 import es.upm.dit.isst.webLab.dao.TripDAO;
 import es.upm.dit.isst.webLab.dao.TripDAOImplementation;
 import es.upm.dit.isst.webLab.model.Employee;
-import es.upm.dit.isst.webLab.model.Professor;
 import es.upm.dit.isst.webLab.model.Trip;
 
 @WebServlet("/CreateTripServlet")

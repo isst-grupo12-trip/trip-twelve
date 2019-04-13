@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import org.hibernate.Session;
 
-import es.upm.dit.isst.webLab.model.Professor;
-
 import es.upm.dit.isst.webLab.model.Employee;
 
 public class EmployeeDAOImplementation implements EmployeeDAO {
@@ -78,7 +76,7 @@ public class EmployeeDAOImplementation implements EmployeeDAO {
 		Collection<Employee> employees = null;
 		try {
 			session.beginTransaction();
-			employees = session.createQuery("from Employee").list();
+			employees = session.createQuery("select * from Employee").list();
 			session.getTransaction().commit();
 		} catch (Exception e){
 			//mensaje error

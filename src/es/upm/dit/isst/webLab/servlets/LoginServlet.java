@@ -14,16 +14,13 @@ import org.apache.shiro.subject.Subject;
 
 import es.upm.dit.isst.webLab.dao.EmployeeDAO;
 import es.upm.dit.isst.webLab.dao.EmployeeDAOImplementation;
-import es.upm.dit.isst.webLab.dao.ProfessorDAO;
-import es.upm.dit.isst.webLab.dao.ProfessorDAOImplementation;
 
 @WebServlet({ "/LoginServlet", "/" })
 public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ProfessorDAO pdao = ProfessorDAOImplementation.getInstance();
-//		EmployeeDAO pdao = EmployeeDAOImplementation.getInstance();
-		req.getSession().setAttribute( "professor_list", pdao.readAll() );
+		EmployeeDAO edao = EmployeeDAOImplementation.getInstance();
+		req.getSession().setAttribute( "employee_list", edao.readAll() );
 		getServletContext().getRequestDispatcher( "/LoginView.jsp" ).forward( req, resp );
 	}
 	

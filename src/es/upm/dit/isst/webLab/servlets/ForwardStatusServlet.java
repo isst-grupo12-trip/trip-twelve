@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.log.SystemLogHandler;
+
 import es.upm.dit.isst.webLab.dao.TripDAO;
 import es.upm.dit.isst.webLab.dao.TripDAOImplementation;
 import es.upm.dit.isst.webLab.model.Trip;
@@ -18,12 +20,17 @@ public class ForwardStatusServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int tripId = Integer.parseInt(req.getParameter( "tripId" ));
+		System.out.println(tripId);
+		
 		boolean isSupervisor = Boolean.parseBoolean(req.getParameter( "isSupervisor" ));
+		System.out.println(isSupervisor);
 		Trip trip = new Trip();
 		TripDAO tripdao = TripDAOImplementation.getInstance();
 		trip = tripdao.read(tripId);
-		trip.setState(1);
+		System.out.println(trip.getState());
+		trip.setState(trip.getState() +1);
 		String supervisorEmail = trip.getTraveller().getSupervisor();
+		System.out.println(supervisorEmail);
 		tripdao.update(trip);
 		if (isSupervisor) {
 			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail);

@@ -59,7 +59,7 @@
  					<td>${tripi.motive }</td>
 					<td>${tripi.amount }</td> 
  					<td><c:if test="${tripi.state == 1}"> 
- 							<form action="ForwardStatusServlet">
+ 							<form action="ForwardStatusServlet" method="post">
  								<input type="hidden" name="tripId" value="${tripi.tripId}" />
  								<input type="hidden" name="isSupervisor" value="${false}" /> 
 								<button type="submit">Solicitar reintegro</button>

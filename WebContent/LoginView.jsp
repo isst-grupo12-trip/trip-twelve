@@ -20,7 +20,6 @@
 
 		<nav
 			class="navbar navbar-expand-md navbar-light fixed-top custom-navbar">
-			<!-- 		1navbar-light bg-light     2navbar navbar-brand navbar-expand-lg navbar-light fixed-top scrolling-navbar-->
 			<div class="container-fluid">
 				<a class="navbar-brand mb-0 h1" href="#"><img
 					src="img/travel.png" style="width: 40px; margin-right: 5px;">

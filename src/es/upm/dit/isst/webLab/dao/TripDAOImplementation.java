@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.hibernate.Session;
 
+import es.upm.dit.isst.webLab.model.Receipt;
 import es.upm.dit.isst.webLab.model.Trip;
 
 public class TripDAOImplementation implements TripDAO {
@@ -86,10 +87,13 @@ public class TripDAOImplementation implements TripDAO {
 		return trips;
 	}
 
+	
+
 	public static TripDAOImplementation getInstance() {
 		if (null == instancia) 
 			instancia = new TripDAOImplementation();
 		return instancia;
 	}
+
 	
 }

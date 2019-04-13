@@ -2,6 +2,7 @@ package es.upm.dit.isst.webLab.dao;
 
 import java.util.Collection;
 
+import es.upm.dit.isst.webLab.model.Receipt;
 import es.upm.dit.isst.webLab.model.Trip;
 
 public interface TripDAO {

@@ -33,11 +33,12 @@
 		<h3>Crear factura nueva</h3>
 		<form action="CreateReceiptServlet" method="post">
 			<p>
-				Comprobante: <button name="receipt" action="CreateReceiptServlet">Añadir comprobante</button>
+				Comprobante: <button name="image" action="UploadPhoto">Añadir comprobante</button>
 			</p>
 			<p>
-				Importe: <input type="text" name="price" />
+				Importe: <input type="text" name="amount" />
 			</p>
+			<input type="hidden" name="email" value="${tripId}" />	
 			<p>
 				<button type="submit">Crear factura</button>
 			</p>

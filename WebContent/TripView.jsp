@@ -6,53 +6,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employee View</title>
+<title>Trip View</title>
 </head>
 <body>
 <shiro:user>
     Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
 </shiro:user>
 <hr>
-	<h2>Vista de empleado</h2>
+	<h2>Detalles del viaje</h2>
 	<shiro:lacksRole name="employee">
 	No tienes permiso para ver el contenido de esta página
 </shiro:lacksRole>
 	<shiro:hasRole name="employee">
-		<h3>Crear Viaje nuevo</h3>
-		<form action="CreateTripServlet" method="post">
+		<p>
+			Destino: ${trip.getDestiny()}
+		</p>
+		<p>
+			Fecha de inicio: ${trip.getStartDate()}
+		</p>
+		<p>
+			Fecha de fin: ${trip.getEndDate()}
+		</p>
+		<p>
+			Motivo: ${trip.getMotive()}
+		</p>
+		<h3>Crear factura nueva</h3>
+		<form action="CreateReceiptServlet" method="post">
 			<p>
-				Destino: <input type="text" name="destination" />
+				Comprobante: <button name="receipt" action="CreateReceiptServlet">Añadir comprobante</button>
 			</p>
 			<p>
-				Fecha de Ida: <input type="text" name="startDate" />
-			</p>	
-			<p>
-				Fecha de Vuelta: <input type=text name="endDate" />
+				Importe: <input type="text" name="price" />
 			</p>
 			<p>
-				Motivo del viaje: <input type="text" name="motive" />
-			</p>
-			<p>
-				Importe Esperado: <input type="text" name="amount" />
-			</p>
-			<input type="hidden" name="email" value="${employee.email}" />			
-			<p>
-				<button type="submit">Crear Viaje</button>
+				<button type="submit">Crear factura</button>
 			</p>
 		</form>
 		
-		<h3>Listado de Viajes</h3>
+		<h3>Listado de facturas</h3>
  		<table border="1">
 			<tr> 
-				<th>Destino</th>
-				<th>Fecha de Ida</th>
- 				<th>Fecha de Vuelta</th> 
-				<th>Motivo del viaje</th> 
-				<th>Importe Esperado</th> 
- 				<th>Acción requerida</th> 
- 				<th>Detalles del viaje</th> 
+				<th>Importe</th>
+				<th>Comprobante</th>
  			</tr>
- 			<c:forEach items="${trip_list}" var="tripi"> 
+ 			<!-- <c:forEach items="${trip_list}" var="tripi"> 
  				<tr> 
 					<td>${tripi.destiny }</td> 
  					<td>${tripi.startDate }</td> 
@@ -79,7 +76,7 @@
 						</td>
  					</c:if>
  				</tr> 
- 			</c:forEach> 
+ 			</c:forEach> -->
  		</table>		 
 	</shiro:hasRole>
 </body>

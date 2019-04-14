@@ -11,6 +11,9 @@
 
 <link rel="stylesheet" href="css/loginstyle.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
+
+
 
 <title>TRIP-TWELVE</title>
 </head>
@@ -37,6 +40,7 @@
 							name="email" class="form-control" placeholder="Email"
 							id="loginEmail" />
 					</div>
+					
 					<div class="form-group">
 						<label for="loginPassword">Password:</label> <input
 							type="password" name="password" class="form-control"

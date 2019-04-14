@@ -1,4 +1,7 @@
-
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
 .custom-navbar  {
     background: rgba(255, 255, 255, 0.9);
 
@@ -19,5 +22,6 @@
 	justify-content: center;
 	align-items: center;
 }
+
 
 

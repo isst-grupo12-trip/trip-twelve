@@ -131,13 +131,13 @@
 	
 	
 </div>
-<!-- 	All Trips Table Section-->	
-<div id="trips" class="container-fluid">
-	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
-		<button class="btn btn-outline-dark">boton</button>
+<!-- 	All Trips Table Section	 -->
+<!-- <div id="trips" class="container-fluid"> -->
+<!-- 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh"> -->
+<!-- 		<button class="btn btn-outline-dark">boton</button> -->
 
-	</div>
-</div>
+<!-- 	</div> -->
+<!-- </div> -->
 <div id="trips" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
 		<table class="table ">
@@ -148,6 +148,8 @@
 			   	   <th scope="col">Fecha de ida</th>
 			   	   <th scope="col">Fecha de vuelta</th>
 			   	   <th scope="col">Importe</th>
+			   	   <th>Acción requerida</th>
+			   	   <th>Detalles del viaje</th>
 			   	 </tr>
 		  	</thead>
 		  	
@@ -161,12 +163,58 @@
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.startDate }</td>
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.endDate }</td>
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.amount } €</td>
+				<c:if test="${tripi.state == 0}"> 
+	 							<td data-toggle="collapse" data-target="#collapseTwo">Pendiente de aceptacion</td>
+	 							<td data-toggle="collapse" data-target="#collapseTwo">
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+	 						</c:if>
+							<c:if test="${tripi.state == 1}">
+								<td data-toggle="collapse" data-target="#collapseTwo"><form action="ForwardStatusServlet" method="post">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="isSupervisor" value="${false}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Solicitar reintegro</button>
+									</form>
+								</td>
+								<td data-toggle="collapse" data-target="#collapseTwo">
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+							</c:if>
+							<c:if test="${tripi.state == 2}"> 
+	 							<td>Pendiente de reintegro</td>
+	 							<td data-toggle="collapse" data-target="#collapseTwo">
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+	 						</c:if>
+							<c:if test="${tripi.state == 3}">
+								<td>Finalizado</td>
+								<td data-toggle="collapse" data-target="#collapseTwo">
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+							</c:if>
 				<td><i class="icon-search icon-white"></i></td>
 				</tr>
 			
 				<tr>
 					<td></td>
-					<td colspan="4">
+					<td colspan="6">
 						<div id="collapseTwo" class="collapse in" data-parent="#accordion">
 							${tripi.motive}
 						</div>
@@ -179,11 +227,10 @@
 		</table>
 	</div>
 </div>
-
-
+	
 <!-- <div id="trips" class="container-fluid"> -->
 <!-- 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh"> -->
-	
+<!-- 		<button class="btn btn-outline-dark">boton</button> -->
 <!-- 						<table border="1"> -->
 <!-- 					<tr> -->
 <!-- 						<th>Destino</th> -->
@@ -201,22 +248,52 @@
 <%-- 							<td>${tripi.endDate }</td> --%>
 <%-- 							<td>${tripi.motive }</td> --%>
 <%-- 							<td>${tripi.amount }</td> --%>
-<%-- 							<td><c:if test="${tripi.state == 1}"> --%>
-<!-- 									<form action="ForwardStatusServlet" method="post"> -->
-<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
-<%-- 										<input type="hidden" name="isSupervisor" value="${false}" /> --%>
-<!-- 										<button type="submit">Solicitar reintegro</button> -->
-<!-- 									</form> -->
-<%-- 								</c:if> <c:if test="${tripi.state == 0}">  --%>
-<!-- 	 							Pendiente de aceptacion -->
-<%-- 	 						</c:if></td> --%>
-<%-- 							<c:if test="${tripi.state == 1}"> --%>
-<!-- 								<td> -->
+<%-- 							<c:if test="${tripi.state == 0}">  --%>
+<!-- 	 							<td>Pendiente de aceptacion</td> -->
+<!-- 	 							<td> -->
 <!-- 									<form action="TripServlet"> -->
 <%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="email" value="${employee.email}" /> --%>
 <!-- 										<button type="submit">Ver detalles</button> -->
 <!-- 									</form> -->
 <!-- 								</td> -->
+<%-- 	 						</c:if> --%>
+<%-- 							<c:if test="${tripi.state == 1}"> --%>
+<!-- 								<td><form action="ForwardStatusServlet" method="post"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="isSupervisor" value="${false}" /> --%>
+<%-- 										<input type="hidden" name="email" value="${employee.email}" /> --%>
+<!-- 										<button type="submit">Solicitar reintegro</button> -->
+<!-- 									</form> -->
+<!-- 								</td> -->
+<!-- 								<td> -->
+<!-- 									<form action="TripServlet"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="email" value="${employee.email}" /> --%>
+<!-- 										<button type="submit">Ver detalles</button> -->
+<!-- 									</form> -->
+<!-- 								</td> -->
+<%-- 							</c:if> --%>
+<%-- 							<c:if test="${tripi.state == 2}">  --%>
+<!-- 	 							<td>Pendiente de reintegro</td> -->
+<!-- 	 							<td> -->
+<!-- 									<form action="TripServlet"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="email" value="${employee.email}" /> --%>
+<!-- 										<button type="submit">Ver detalles</button> -->
+<!-- 									</form> -->
+<!-- 								</td> -->
+<%-- 	 						</c:if> --%>
+<%-- 							<c:if test="${tripi.state == 3}"> --%>
+<!-- 								<td>Finalizado</td> -->
+<!-- 								<td> -->
+<!-- 									<form action="TripServlet"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="email" value="${employee.email}" /> --%>
+<!-- 										<button type="submit">Ver detalles</button> -->
+<!-- 									</form> -->
+<!-- 								</td> -->
+								
 <%-- 							</c:if> --%>
 <!-- 						</tr> -->
 <%-- 					</c:forEach> --%>
@@ -224,90 +301,6 @@
 <!-- 	</div> -->
 <!-- </div> -->
 </shiro:hasRole>
-
-
-
-<!-- 		<div class="container-fluid"> -->
-<!-- 			<hr> -->
-
-<!-- 			<h2>Vista de empleado</h2> -->
-
-
-<%-- 			<shiro:lacksRole name="employee"> --%>
-<!-- 				No tienes permiso para ver el contenido de esta página -->
-<%-- 			</shiro:lacksRole> --%>
-
-
-<%-- 			<shiro:hasRole name="employee"> --%>
-
-<!-- 				<h3>Crear Viaje nuevo</h3> -->
-
-<!-- 				<form action="CreateTripServlet" method="post"> -->
-<!-- 					<p> -->
-<!-- 						Destino: <input type="text" name="destination" /> -->
-<!-- 					</p> -->
-<!-- 					<p> -->
-<!-- 						Fecha de Ida: <input type="text" name="startDate" /> -->
-<!-- 					</p> -->
-<!-- 					<p> -->
-<!-- 						Fecha de Vuelta: <input type=text name="endDate" /> -->
-<!-- 					</p> -->
-<!-- 					<p> -->
-<!-- 						Motivo del viaje: <input type="text" name="motive" /> -->
-<!-- 					</p> -->
-<!-- 					<p> -->
-<!-- 						Importe Esperado: <input type="text" name="amount" /> -->
-<!-- 					</p> -->
-<%-- 					<input type="hidden" name="email" value="${employee.email}" /> --%>
-<!-- 					<p> -->
-<!-- 						<button type="submit">Crear Viaje</button> -->
-<!-- 					</p> -->
-<!-- 				</form> -->
-
-<!-- 				<h3>Listado de Viajes</h3> -->
-<!-- 				<table border="1"> -->
-<!-- 					<tr> -->
-<!-- 						<th>Destino</th> -->
-<!-- 						<th>Fecha de Ida</th> -->
-<!-- 						<th>Fecha de Vuelta</th> -->
-<!-- 						<th>Motivo del viaje</th> -->
-<!-- 						<th>Importe Esperado</th> -->
-<!-- 						<th>Acción requerida</th> -->
-<!-- 						<th>Detalles del viaje</th> -->
-<!-- 					</tr> -->
-<%-- 					<c:forEach items="${trip_list}" var="tripi"> --%>
-<!-- 						<tr> -->
-<%-- 							<td>${tripi.destiny }</td> --%>
-<%-- 							<td>${tripi.startDate }</td> --%>
-<%-- 							<td>${tripi.endDate }</td> --%>
-<%-- 							<td>${tripi.motive }</td> --%>
-<%-- 							<td>${tripi.amount }</td> --%>
-<%-- 							<td><c:if test="${tripi.state == 1}"> --%>
-<!-- 									<form action="ForwardStatusServlet" method="post"> -->
-<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
-<%-- 										<input type="hidden" name="isSupervisor" value="${false}" /> --%>
-<!-- 										<button type="submit">Solicitar reintegro</button> -->
-<!-- 									</form> -->
-<%-- 								</c:if> <c:if test="${tripi.state == 0}">  --%>
-<!-- 	 							Pendiente de aceptacion -->
-<%-- 	 						</c:if></td> --%>
-<%-- 							<c:if test="${tripi.state == 1}"> --%>
-<!-- 								<td> -->
-<!-- 									<form action="TripServlet"> -->
-<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
-<!-- 										<button type="submit">Ver detalles</button> -->
-<!-- 									</form> -->
-<!-- 								</td> -->
-<%-- 							</c:if> --%>
-<!-- 						</tr> -->
-<%-- 					</c:forEach> --%>
-<!-- 				</table> -->
-<%-- 			</shiro:hasRole> --%>
-<!-- 		</div> -->
-<!-- 	</div> -->
-	
-	
-	
 	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

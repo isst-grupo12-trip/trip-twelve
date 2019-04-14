@@ -135,45 +135,94 @@
 <div id="trips" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
 		<button class="btn btn-outline-dark">boton</button>
-						<table border="1">
-					<tr>
-						<th>Destino</th>
-						<th>Fecha de Ida</th>
-						<th>Fecha de Vuelta</th>
-						<th>Motivo del viaje</th>
-						<th>Importe Esperado</th>
-						<th>Acción requerida</th>
-						<th>Detalles del viaje</th>
-					</tr>
-					<c:forEach items="${trip_list}" var="tripi">
-						<tr>
-							<td>${tripi.destiny }</td>
-							<td>${tripi.startDate }</td>
-							<td>${tripi.endDate }</td>
-							<td>${tripi.motive }</td>
-							<td>${tripi.amount }</td>
-							<td><c:if test="${tripi.state == 1}">
-									<form action="ForwardStatusServlet" method="post">
-										<input type="hidden" name="tripId" value="${tripi.tripId}" />
-										<input type="hidden" name="isSupervisor" value="${false}" />
-										<button type="submit">Solicitar reintegro</button>
-									</form>
-								</c:if> <c:if test="${tripi.state == 0}"> 
-	 							Pendiente de aceptacion
-	 						</c:if></td>
-							<c:if test="${tripi.state == 1}">
-								<td>
-									<form action="TripServlet">
-										<input type="hidden" name="tripId" value="${tripi.tripId}" />
-										<button type="submit">Ver detalles</button>
-									</form>
-								</td>
-							</c:if>
-						</tr>
-					</c:forEach>
-				</table>
+
 	</div>
 </div>
+<div id="trips" class="container-fluid">
+	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
+		<table class="table ">
+		  	<thead class="thead-light">
+			   	 <tr>
+			   	   <th scope="col">#</th>
+			   	   <th scope="col">Destino</th>
+			   	   <th scope="col">Fecha de ida</th>
+			   	   <th scope="col">Fecha de vuelta</th>
+			   	   <th scope="col">Importe</th>
+			   	 </tr>
+		  	</thead>
+		  	
+<c:forEach items="${trip_list}" var="tripi" varStatus="loop">		  	
+		  	
+		  	
+		  	<tbody>
+				<tr class="accordion-toggle">
+				<td data-toggle="collapse" data-target="#collapseTwo" scope="row">${loop.index +1}</td>
+				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.destiny }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.startDate }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.endDate }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.amount }</td>
+				<td><i class="icon-search icon-white"></i></td>
+				</tr>
+			
+<!-- 				<tr> -->
+<!-- 					<td></td> -->
+<!-- 					<td colspan="4"> -->
+<!-- 						<div id="collapseTwo" class="collapse in"> -->
+<%-- 							${tripi.motive } --%>
+<!-- 						</div> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+			</tbody>
+			
+</c:forEach>
+			
+		</table>
+	</div>
+</div>
+
+
+<!-- <div id="trips" class="container-fluid"> -->
+<!-- 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh"> -->
+	
+<!-- 						<table border="1"> -->
+<!-- 					<tr> -->
+<!-- 						<th>Destino</th> -->
+<!-- 						<th>Fecha de Ida</th> -->
+<!-- 						<th>Fecha de Vuelta</th> -->
+<!-- 						<th>Motivo del viaje</th> -->
+<!-- 						<th>Importe Esperado</th> -->
+<!-- 						<th>Acción requerida</th> -->
+<!-- 						<th>Detalles del viaje</th> -->
+<!-- 					</tr> -->
+<%-- 					<c:forEach items="${trip_list}" var="tripi"> --%>
+<!-- 						<tr> -->
+<%-- 							<td>${tripi.destiny }</td> --%>
+<%-- 							<td>${tripi.startDate }</td> --%>
+<%-- 							<td>${tripi.endDate }</td> --%>
+<%-- 							<td>${tripi.motive }</td> --%>
+<%-- 							<td>${tripi.amount }</td> --%>
+<%-- 							<td><c:if test="${tripi.state == 1}"> --%>
+<!-- 									<form action="ForwardStatusServlet" method="post"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 										<input type="hidden" name="isSupervisor" value="${false}" /> --%>
+<!-- 										<button type="submit">Solicitar reintegro</button> -->
+<!-- 									</form> -->
+<%-- 								</c:if> <c:if test="${tripi.state == 0}">  --%>
+<!-- 	 							Pendiente de aceptacion -->
+<%-- 	 						</c:if></td> --%>
+<%-- 							<c:if test="${tripi.state == 1}"> --%>
+<!-- 								<td> -->
+<!-- 									<form action="TripServlet"> -->
+<%-- 										<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<!-- 										<button type="submit">Ver detalles</button> -->
+<!-- 									</form> -->
+<!-- 								</td> -->
+<%-- 							</c:if> --%>
+<!-- 						</tr> -->
+<%-- 					</c:forEach> --%>
+<!-- 				</table> -->
+<!-- 	</div> -->
+<!-- </div> -->
 </shiro:hasRole>
 
 

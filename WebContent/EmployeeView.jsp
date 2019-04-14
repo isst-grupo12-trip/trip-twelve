@@ -154,24 +154,24 @@
 <c:forEach items="${trip_list}" var="tripi" varStatus="loop">		  	
 		  	
 		  	
-		  	<tbody>
+		  	<tbody  id="accordion">
 				<tr class="accordion-toggle">
 				<td data-toggle="collapse" data-target="#collapseTwo" scope="row">${loop.index +1}</td>
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.destiny }</td>
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.startDate }</td>
 				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.endDate }</td>
-				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.amount }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.amount } €</td>
 				<td><i class="icon-search icon-white"></i></td>
 				</tr>
 			
-<!-- 				<tr> -->
-<!-- 					<td></td> -->
-<!-- 					<td colspan="4"> -->
-<!-- 						<div id="collapseTwo" class="collapse in"> -->
-<%-- 							${tripi.motive } --%>
-<!-- 						</div> -->
-<!-- 					</td> -->
-<!-- 				</tr> -->
+				<tr>
+					<td></td>
+					<td colspan="4">
+						<div id="collapseTwo" class="collapse in" data-parent="#accordion">
+							${tripi.motive}
+						</div>
+					</td>
+				</tr>
 			</tbody>
 			
 </c:forEach>

@@ -6,12 +6,42 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Supervisor View</title>
+
+<link rel="stylesheet" href="css/employeestyle.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<title>Supervisor</title>
 </head>
-<body>
-<shiro:user>
-    Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
-</shiro:user>
+<body id="page-top">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand mb-0 h1" href="#"><img src="img/travel.png" style="width: 40px; margin-right: 5px;">TripTwelve</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#new-trip">New Trip</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#trips">Trips</a>
+					</li>
+					<li class="nav-item">
+						<shiro:user>
+							<a class="nav-link" href="LogoutServlet">Logout</a>
+						</shiro:user>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 <hr>
 	<h2>Vista de supervisor</h2>
 	<shiro:lacksRole name="supervisor">
@@ -54,7 +84,9 @@
 					</td> 
  				</tr> 
  			</c:forEach> 
- 		</table>		 
+ 		</table>	
+ 			 
 	</shiro:hasRole>
+
 </body>
 </html>

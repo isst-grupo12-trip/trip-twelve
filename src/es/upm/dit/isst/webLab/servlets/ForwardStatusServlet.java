@@ -20,6 +20,7 @@ public class ForwardStatusServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int tripId = Integer.parseInt(req.getParameter( "tripId" ));
+		String employeeEmail = req.getParameter("email");
 		System.out.println(tripId);
 		
 		boolean isSupervisor = Boolean.parseBoolean(req.getParameter( "isSupervisor" ));
@@ -35,7 +36,7 @@ public class ForwardStatusServlet extends HttpServlet {
 		if (isSupervisor) {
 			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail);
 		} else {
-			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + supervisorEmail);
+			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + employeeEmail);
 		}
 	}
 	

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import es.upm.dit.isst.webLab.model.Receipt;
 import es.upm.dit.isst.webLab.model.Trip;
 
 @WebServlet("/CreateReceiptServlet")
+@MultipartConfig
 public class CreateReceiptServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,12 +40,13 @@ public class CreateReceiptServlet extends HttpServlet {
 		Part filePart = request.getPart("attachment");
 		String motive = request.getParameter("motive");
 		
-		int tripId = Integer.parseInt(request.getParameter("tripId"));
 		TripDAO tdao = TripDAOImplementation.getInstance();
-		Trip trip = tdao.read(tripId);
 		
 		InputStream fileContent = filePart.getInputStream();
 		byte[] image = IOUtils.readBytesAndClose(fileContent, -1);
+		
+		int tripId = Integer.parseInt(request.getParameter("tripId"));
+		Trip trip = tdao.read(tripId);
 		
 		Receipt receipt = new Receipt();
 		receipt.setAmount(amount);

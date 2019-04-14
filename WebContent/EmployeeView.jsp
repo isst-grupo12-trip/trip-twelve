@@ -158,14 +158,14 @@
 		  	
 		  	<tbody  id="accordion">
 				<tr class="accordion-toggle">
-				<td data-toggle="collapse" data-target="#collapseTwo" scope="row">${loop.index +1}</td>
-				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.destiny }</td>
-				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.startDate }</td>
-				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.endDate }</td>
-				<td data-toggle="collapse" data-target="#collapseTwo">${tripi.amount } €</td>
+				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}" scope="row">${loop.index +1}</td>
+				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.destiny }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.startDate }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.endDate }</td>
+				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.amount } €</td>
 				<c:if test="${tripi.state == 0}"> 
-	 							<td data-toggle="collapse" data-target="#collapseTwo">Pendiente de aceptacion</td>
-	 							<td data-toggle="collapse" data-target="#collapseTwo">
+	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">Pendiente de aceptacion</td>
+	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
@@ -174,38 +174,38 @@
 								</td>
 	 						</c:if>
 							<c:if test="${tripi.state == 1}">
-								<td data-toggle="collapse" data-target="#collapseTwo"><form action="ForwardStatusServlet" method="post">
+								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}"><form action="ForwardStatusServlet" method="post">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="isSupervisor" value="${false}" />
 										<input type="hidden" name="email" value="${employee.email}" />
-										<button type="submit">Solicitar reintegro</button>
+										<button class="btn btn-outline-dark" type="submit">Solicitar reintegro</button>
 									</form>
 								</td>
-								<td data-toggle="collapse" data-target="#collapseTwo">
+								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
-										<button type="submit">Ver detalles</button>
+										<button class="btn btn-outline-dark" type="submit">Ver detalles</button>
 									</form>
 								</td>
 							</c:if>
 							<c:if test="${tripi.state == 2}"> 
 	 							<td>Pendiente de reintegro</td>
-	 							<td data-toggle="collapse" data-target="#collapseTwo">
+	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
-										<button type="submit">Ver detalles</button>
+										<button class="btn btn-outline-dark" type="submit">Ver detalles</button>
 									</form>
 								</td>
 	 						</c:if>
 							<c:if test="${tripi.state == 3}">
 								<td>Finalizado</td>
-								<td data-toggle="collapse" data-target="#collapseTwo">
+								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
-										<button type="submit">Ver detalles</button>
+										<button class="btn btn-outline-dark" type="submit">Ver detalles</button>
 									</form>
 								</td>
 							</c:if>
@@ -215,7 +215,7 @@
 				<tr>
 					<td></td>
 					<td colspan="6">
-						<div id="collapseTwo" class="collapse in" data-parent="#accordion">
+						<div id="collapseTwo${tripi.tripId}" class="collapse in" data-parent="#accordion">
 							${tripi.motive}
 						</div>
 					</td>

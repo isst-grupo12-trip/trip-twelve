@@ -152,22 +152,52 @@
 							<td>${tripi.endDate }</td>
 							<td>${tripi.motive }</td>
 							<td>${tripi.amount }</td>
-							<td><c:if test="${tripi.state == 1}">
-									<form action="ForwardStatusServlet" method="post">
-										<input type="hidden" name="tripId" value="${tripi.tripId}" />
-										<input type="hidden" name="isSupervisor" value="${false}" />
-										<button type="submit">Solicitar reintegro</button>
-									</form>
-								</c:if> <c:if test="${tripi.state == 0}"> 
-	 							Pendiente de aceptacion
-	 						</c:if></td>
-							<c:if test="${tripi.state == 1}">
-								<td>
+							<c:if test="${tripi.state == 0}"> 
+	 							<td>Pendiente de aceptacion</td>
+	 							<td>
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
 										<button type="submit">Ver detalles</button>
 									</form>
 								</td>
+	 						</c:if>
+							<c:if test="${tripi.state == 1}">
+								<td><form action="ForwardStatusServlet" method="post">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="isSupervisor" value="${false}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Solicitar reintegro</button>
+									</form>
+								</td>
+								<td>
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+							</c:if>
+							<c:if test="${tripi.state == 2}"> 
+	 							<td>Pendiente de reintegro</td>
+	 							<td>
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+	 						</c:if>
+							<c:if test="${tripi.state == 3}">
+								<td>Finalizado</td>
+								<td>
+									<form action="TripServlet">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+										<button type="submit">Ver detalles</button>
+									</form>
+								</td>
+								
 							</c:if>
 						</tr>
 					</c:forEach>

@@ -8,9 +8,11 @@ public class Receipt implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int receiptId;
-	private Byte[] image;
 	private double amount;
 	private String motive;
+	
+	@Lob
+	private byte[] image;
 
 	@ManyToOne
 	private Trip trip;
@@ -35,11 +37,11 @@ public class Receipt implements Serializable {
 		this.receiptId = receiptId;
 	}
 
-	public Byte[] getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Byte[] image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 

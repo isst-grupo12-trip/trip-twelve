@@ -16,7 +16,7 @@
 	<h2>Detalles del viaje</h2>
 	<shiro:lacksRole name="employee">
 	No tienes permiso para ver el contenido de esta página
-</shiro:lacksRole>
+	</shiro:lacksRole>
 	<shiro:hasRole name="employee">
 		<p>
 			Destino: ${trip.getDestiny()}
@@ -31,15 +31,14 @@
 			Motivo: ${trip.getMotive()}
 		</p>
 		<h3>Crear factura nueva</h3>
-		<form action="CreateReceiptServlet" method="post">
+		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
 			<p>
 				Motivo: <input type="text" name="motive" />
 			</p>
 			<p>
-				Comprobante: <button name="image" action="UploadPhoto">Añadir comprobante</button>
-			</p>
+				Comprobante: <input type="file" name="attachment" />
 			<p>
-				Importe: <input type="number" name="amount" />
+				Importe: <input type="text" name="amount" />
 			</p>
 			<input type="hidden" name="tripId" value="${trip.tripId}" />	
 			<p>

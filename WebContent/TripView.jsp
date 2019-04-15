@@ -51,9 +51,11 @@
 					<li class="nav-item"><a class="nav-link" href="#info">Informacion</a></li>
 					<li class="nav-item"><a class="nav-link" href="#receipts">Facturas</a>
 					</li>
-					<li class="nav-item"><shiro:user>
+					<li class="nav-item">
+						<shiro:user>
 							<a class="nav-link" href="LogoutServlet">Logout</a>
-						</shiro:user></li>
+						</shiro:user>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -150,14 +152,16 @@
 
 	
 
-<div  id="info" class="align-items-center">
-<div class="container-fluid d-felx flex-row  text-center " style="height: 100vh;   background-image: linear-gradient(to right, #207ce5 , #fedc44);">
+<div  id="info" class="">
+<div class="container-fluid d-flex flex-row  text-center align-items-center justify-content-center" style="height: 100vh;   background-image: linear-gradient(to right, #207ce5 , #fedc44);">
 		
 		
-    <div class="p-2 order-first text-center card align-self-center">
+    <div class="p-2 order-first text-center card x3 ">
     
     
-	    <h2 class="card-header">Detalles del viaje</h2>
+	    <div class="card-header">
+	    	<h3>Detalles del viaje</h3>
+	    </div>
 			<shiro:lacksRole name="employee">
 				No eres empleado
 			</shiro:lacksRole>

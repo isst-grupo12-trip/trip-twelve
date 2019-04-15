@@ -87,7 +87,7 @@
 				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
-									TODO	<input type="hidden" name="email" value="${email}" />
+									TODO	<input type="hidden" name="email" value="${supervisor.email}" />
 										<button class="btn btn-outline-dark" type="submit">Ver detalles</button>
 									</form>
 				</td>

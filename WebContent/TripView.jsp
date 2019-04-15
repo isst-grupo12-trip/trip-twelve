@@ -15,9 +15,9 @@
 <hr>
 	<h2>Detalles del viaje</h2>
 	<shiro:lacksRole name="employee">
-	No tienes permiso para ver el contenido de esta página
+	No eres empleado
 	</shiro:lacksRole>
-	<shiro:hasRole name="employee">
+	
 		<p>
 			Destino: ${trip.getDestiny()}
 		</p>
@@ -30,6 +30,8 @@
 		<p>
 			Motivo: ${trip.getMotive()}
 		</p>
+		<shiro:lacksRole name="supervisor">
+	
 		<h3>Crear factura nueva</h3>
 		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
 			<p>
@@ -45,7 +47,7 @@
 				<button type="submit">Crear factura</button>
 			</p>
 		</form>
-		
+		</shiro:lacksRole>
 		<h3>Listado de facturas</h3>
  		<table border="1">
 			<tr> 
@@ -66,7 +68,6 @@
  					
   				</tr>
   			</c:forEach>
- 		</table>		 
-	</shiro:hasRole>
+ 		</table>	
 </body>
 </html>

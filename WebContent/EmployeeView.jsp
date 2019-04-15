@@ -220,7 +220,9 @@
 					<td style="margin:0; padding:0; border-spacing: 0;"></td>
 					<td colspan="6" style="margin:0; padding:0; border-spacing: 0;">
 						<div id="collapseTwo${tripi.tripId}" class="collapse in" data-parent="#accordion">
-							 <div>Descripción: </div>${tripi.motive}
+							<div style="margin:5px; padding:5px;">
+								<div>Descripción: </div>${tripi.motive}
+							</div>
 						</div>
 					</td>
 				</tr>

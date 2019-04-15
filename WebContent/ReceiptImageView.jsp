@@ -57,6 +57,7 @@
 	
 	<hr>
 	<h2>Comprobante del recibo</h2>
+
 	
 
 	<div id="trip-receipt" class="container-fluid">
@@ -103,5 +104,13 @@
 	
 	
 	
+
+	<shiro:hasRole name="employee">
+	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
+	</shiro:hasRole>
+	<shiro:hasRole name="supervisor">
+	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
+	</shiro:hasRole>
+
 </body>
 </html>

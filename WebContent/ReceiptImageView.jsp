@@ -14,10 +14,10 @@
 </shiro:user>
 <hr>
 	<h2>Comprobante del recibo</h2>
-	<shiro:lacksRole name="employee">
-	No tienes permiso para ver el contenido de esta página
-	</shiro:lacksRole>
 	<shiro:hasRole name="employee">
+	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
+	</shiro:hasRole>
+	<shiro:hasRole name="supervisor">
 	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
 	</shiro:hasRole>
 </body>

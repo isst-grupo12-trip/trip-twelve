@@ -30,7 +30,6 @@ public class ShowImageServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int receiptId =  Integer.parseInt(request.getParameter( "receiptId" ));
-//        int receiptId =  Integer.parseInt(request.getParameter( "receiptImage" ));
         Receipt receipt = new Receipt();
         ReceiptDAO recdao = ReceiptDAOImplementation.getInstance();
 		receipt = recdao.read(receiptId);
@@ -38,8 +37,6 @@ public class ShowImageServlet extends HttpServlet {
 		byte[] receiptImageBytes = receipt.getImage();
 		InputStream in = new ByteArrayInputStream(receiptImageBytes);
 		BufferedImage receiptImage = ImageIO.read(in);
-		
-//		request.getSession().setAttribute("image", receiptImage);
 		
 		response.setContentType("image/jpeg");
 		OutputStream out = response.getOutputStream();

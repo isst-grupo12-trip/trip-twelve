@@ -18,7 +18,7 @@
 	No tienes permiso para ver el contenido de esta página
 	</shiro:lacksRole>
 	<shiro:hasRole name="employee">
-	<img src="./ShowImageServlet?receiptId=${receiptId}" />
+	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
 	</shiro:hasRole>
 </body>
 </html>

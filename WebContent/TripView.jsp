@@ -58,10 +58,6 @@
 					<td>${receipti.motive }</td>
 					<td>${receipti.amount }</td>
 					<td>
-<!-- 					<form action="ShowImageServlet"> -->
-<%-- 						<input type="hidden" name="receiptImage" value="${receipti.receiptId}" /> --%>
-<!-- 						<button type="submit">Ver comprobante</button> -->
-<!-- 					</form> -->
 					<form action="ReceiptImageView.jsp" action="post">
 						<input type="hidden" name="receiptId" value="${receipti.receiptId}" />
 						<button type="submit">Ver comprobante</button>

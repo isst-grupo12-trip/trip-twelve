@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="css/employeestyle.css">
+<link rel="stylesheet" href="css/detailsstyle.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
@@ -24,13 +24,6 @@
 </shiro:lacksRole>
 
 
-
-
-
-
-
-
-
 <div class="container-fluid principal">
 
 
@@ -44,10 +37,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					
+				<shiro:hasRole name="employee">
 					<li class="nav-item">
 						<a class="nav-link" href="#create-receipt">Crear Factura</a>
 					</li>
+				</shiro:hasRole>
 					<li class="nav-item"><a class="nav-link" href="#info">Informacion</a></li>
 					<li class="nav-item"><a class="nav-link" href="#receipts">Facturas</a>
 					</li>
@@ -92,16 +86,18 @@
 										<label for="motive"> Motivo: </label> 
 										<textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"> </textarea>               
 									</div>
-									
-									
+
 									<div class="form-group">
 										<label for="attachment"> Comprobante: </label>
 										<div class="input-group">
-											<input type="file" name="attachment" id="attachment" class="form-control" />
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="attachment" name="attachment">
+												<label class="custom-file-label" for="attachment">Choose file</label>
+											</div>
 										</div>
 									</div>
-									
-									<div class="form-group">
+
+										<div class="form-group">
 										<label for="amount"> Importe esperado: </label>
 										<div class="input-group">
 											<input type="text" name="amount" id="amount" class="form-control" placeholder="Importe" />
@@ -163,9 +159,11 @@
 	    <div class="card-header">
 	    	<h3>Detalles del viaje</h3>
 	    </div>
-			<shiro:lacksRole name="employee">
-				No eres empleado
-			</shiro:lacksRole>
+	    
+			<shiro:hasRole name="supervisor">
+				<h6 style="margin-bottom:5px; margin-top:5px"> Eres supervisor </h6>
+			</shiro:hasRole>
+			
 		<div class="card-body">
 		<p class="card-text">
 			Destino: ${trip.getDestiny()}
@@ -183,27 +181,6 @@
 		
 	</div>
 </div>
-<!-- 	<div class="p-2 order-last text-center card"> -->
-<%-- <shiro:lacksRole name="supervisor"> --%>
-<!-- 		<div class="card-body"> -->
-<!-- 		<h2 class="card-title">Crear factura nueva</h2> -->
-<!-- 		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data"> -->
-<!-- 			<p> -->
-<!-- 				Motivo: <input type="text" name="motive" /> -->
-<!-- 			</p> -->
-<!-- 			<p> -->
-<!-- 				Comprobante: <input type="file" name="attachment" /> -->
-<!-- 			<p> -->
-<!-- 				Importe: <input type="text" name="amount" /> -->
-<!-- 			</p> -->
-<%-- 			<input type="hidden" name="tripId" value="${trip.tripId}" />	 --%>
-<!-- 			<p> -->
-<!-- 				<button type="submit">Crear factura</button> -->
-<!-- 			</p> -->
-<!-- 		</form> -->
-<!-- 		</div> -->
-<%-- </shiro:lacksRole> --%>
-<!-- 	</div> -->
 		
 </div>
 
@@ -222,14 +199,41 @@
   			<tbody  id="accordion">
 				<tr class="accordion-toggle">
   				<tr>
-					<td>${receipti.amount } €</td>
+					<td>${receipti.amount} €</td>
 					<td>
-					<form action="ReceiptImageView.jsp" action="post">
-						<input type="hidden" name="receiptId" value="${receipti.receiptId}" />
-						<button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal1">Ver comprobante</button>
-					</form>	
+
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal1">Ver comprobante</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Receipt</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body text-center">
+											<shiro:hasRole name="employee">
+													<img src="./ShowImageServlet?receiptId=${receipti.receiptId}" style="max-width:100%; max-height:auto"/>
+											</shiro:hasRole>
+											<shiro:hasRole name="supervisor">
+													<img src="./ShowImageServlet?receiptId=${receipti.receiptId}" style="max-width:100%; max-height:auto"/>
+											</shiro:hasRole>
+										</div>
+		
+								</div>
+							</div>
+						</div>
+						
+						
+
 					</td>
-					<td>${receipti.motive }</td>
+					<td>${receipti.motive}</td>
  					
   				</tr>
   				</tbody>
@@ -243,6 +247,18 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<script>
+		$('#attachment').on('change', function() {
+			//get the file name
+			var fileName = $(this).val();
+			fileName = fileName.replace("C:\\fakepath\\","");
+			//replace the "Choose a file" label
+			$(this).next('.custom-file-label').html(fileName);
+		})
+	</script>
+
+
 
 </body>
 </html>

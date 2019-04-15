@@ -47,9 +47,10 @@
 	    text-align: center;
 	    background-color:#ffc107;
 }
+
 .x3 {
   min-width: 90% !important;
 }
 
-.modal-dialog{text-align:center;}
+
 .modal-content{display:inline-block;}

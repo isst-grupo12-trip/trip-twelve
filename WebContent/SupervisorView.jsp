@@ -73,14 +73,14 @@
 						<form action="ForwardStatusServlet" method="post">
 							<input type="hidden" name="tripId" value="${tripi.tripId}" />
 							<input type="hidden" name="isSupervisor" value="${true}" />
-						<button type="submit">Aceptar Viaje</button>
+						<button type="submit" class="btn btn-outline-dark">Aceptar Viaje</button>
 					</form> 
 					</c:if>
 				<c:if test="${tripi.state == 2}"> 
 					<form action="ForwardStatusServlet" method="post">
 							<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
 							<input type="hidden" name="isSupervisor" value="${true}" />
-						<button type="submit">Aceptar Reintegro</button> 
+						<button type="submit" class="btn btn-outline-dark">Aceptar Reintegro</button> 
 						</form> 
 				</c:if>
 				</td>
@@ -93,11 +93,13 @@
 				</td>
 				<td><i class="icon-search icon-white"></i></td>
 			</tr> 
-			<tr>
-					<td></td>
-					<td colspan="6">
+				<tr>
+					<td style="margin:0; padding:0; border-spacing: 0;"></td>
+					<td colspan="6" style="margin:0; padding:0; border-spacing: 0;">
 						<div id="collapseTwo${tripi.tripId}" class="collapse in" data-parent="#accordion">
-							${tripi.motive}
+							<div style="margin:5px; padding:5px;">
+								<div>Descripción: </div>${tripi.motive}
+							</div>
 						</div>
 					</td>
 				</tr>

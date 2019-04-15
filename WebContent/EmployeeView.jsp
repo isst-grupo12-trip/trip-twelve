@@ -175,7 +175,7 @@
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
-										<button type="submit">Ver detalles</button>
+										<button type="submit" class="btn btn-outline-dark">Ver detalles</button>
 									</form>
 								</td>
 	 						</c:if>

@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="css/employeestyle.css">
@@ -21,7 +23,15 @@
 
 <title>Employee</title>
 </head>
+
+
 <body id="page-top">
+
+
+	<shiro:lacksRole name="admin">
+	No tienes permiso para ver el contenido de esta página <a class="nav-link" href="LogoutServlet">Iniciar sesión</a>
+</shiro:lacksRole>
+
 
 <shiro:hasRole name="employee">
 <div class="container-fluid principal">

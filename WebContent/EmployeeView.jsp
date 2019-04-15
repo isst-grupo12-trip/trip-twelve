@@ -131,13 +131,7 @@
 	
 	
 </div>
-<!-- 	All Trips Table Section	 -->
-<!-- <div id="trips" class="container-fluid"> -->
-<!-- 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh"> -->
-<!-- 		<button class="btn btn-outline-dark">boton</button> -->
 
-<!-- 	</div> -->
-<!-- </div> -->
 <div id="trips" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
 		<table class="table ">
@@ -165,7 +159,7 @@
 				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.amount } €</td>
 				<c:if test="${tripi.state == 0}"> 
 	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">Pendiente de aceptacion</td>
-	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+	 							<td>
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
@@ -181,7 +175,7 @@
 										<button class="btn btn-outline-dark" type="submit">Solicitar reintegro</button>
 									</form>
 								</td>
-								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+								<td>
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
@@ -190,8 +184,8 @@
 								</td>
 							</c:if>
 							<c:if test="${tripi.state == 2}"> 
-	 							<td>Pendiente de reintegro</td>
-	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+	 							<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">Pendiente de reintegro</td>
+	 							<td>
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />
@@ -200,8 +194,8 @@
 								</td>
 	 						</c:if>
 							<c:if test="${tripi.state == 3}">
-								<td>Finalizado</td>
-								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+								<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">Finalizado</td>
+								<td>
 									<form action="TripServlet">
 										<input type="hidden" name="tripId" value="${tripi.tripId}" />
 										<input type="hidden" name="email" value="${employee.email}" />

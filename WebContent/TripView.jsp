@@ -89,12 +89,13 @@
 								<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
 
 									<div class="form-group">
-										<label for="motive"> Motivo: </label> <textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"> </textarea>               
+										<label for="motive"> Motivo: </label> 
+										<textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"> </textarea>               
 									</div>
 									
 									
 									<div class="form-group">
-										<label for="amount"> Comprobante: </label>
+										<label for="attachment"> Comprobante: </label>
 										<div class="input-group">
 											<input type="file" name="attachment" id="attachment" class="form-control" />
 										</div>
@@ -225,7 +226,7 @@
 					<td>
 					<form action="ReceiptImageView.jsp" action="post">
 						<input type="hidden" name="receiptId" value="${receipti.receiptId}" />
-						<button type="submit">Ver comprobante</button>
+						<button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal1">Ver comprobante</button>
 					</form>	
 					</td>
 					<td>${receipti.motive }</td>

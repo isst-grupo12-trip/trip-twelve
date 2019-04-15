@@ -80,9 +80,12 @@
 							</div>
 							<div class="modal-body">
 									<shiro:hasRole name="employee">
-										<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
+											<img src="./ShowImageServlet?receiptId=${param.receiptId}" style="max-width:100%; max-height:auto"/>
 									</shiro:hasRole>
-							</div>
+									<shiro:hasRole name="supervisor">
+											<img src="./ShowImageServlet?receiptId=${param.receiptId}" style="max-width:100%; max-height:auto"/>
+									</shiro:hasRole>
+								</div>
 
 						</div>
 					</div>
@@ -94,23 +97,22 @@
 	
 	
 	
-	
-	
-	
-	
-	<shiro:hasRole name="employee">
-	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
-	</shiro:hasRole>
-	
-	
-	
 
-	<shiro:hasRole name="employee">
-	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
-	</shiro:hasRole>
-	<shiro:hasRole name="supervisor">
-	<img src="./ShowImageServlet?receiptId=${param.receiptId}" />
-	</shiro:hasRole>
+
+<%-- 	<shiro:hasRole name="employee"> --%>
+<%-- 	<img src="./ShowImageServlet?receiptId=${param.receiptId}" /> --%>
+<%-- 	</shiro:hasRole> --%>
+<%-- 	<shiro:hasRole name="supervisor"> --%>
+<%-- 	<img src="./ShowImageServlet?receiptId=${param.receiptId}" /> --%>
+<%-- 	</shiro:hasRole> --%>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>

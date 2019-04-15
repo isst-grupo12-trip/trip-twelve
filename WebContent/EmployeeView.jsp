@@ -28,7 +28,7 @@
 <body id="page-top">
 
 
-	<shiro:lacksRole name="admin">
+<shiro:lacksRole name="admin">
 	No tienes permiso para ver el contenido de esta página <a class="nav-link" href="LogoutServlet">Iniciar sesión</a>
 </shiro:lacksRole>
 
@@ -141,6 +141,8 @@
 	
 	
 </div>
+
+
 
 <div id="trips" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">

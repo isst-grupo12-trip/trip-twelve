@@ -53,10 +53,12 @@
 			</div>
 		</shiro:guest>
 	</div>
-
-	<shiro:user>
+<div class="row justify-content-center align-items-center"
+				id="loginForm" style="height: 100vh">	
+<shiro:user>
     Welcome back <shiro:principal />! Click <a href="LogoutServlet">here</a> to logout.
 </shiro:user>
+</div>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

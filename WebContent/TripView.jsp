@@ -18,6 +18,22 @@
 </head>
 <body>
 
+
+<shiro:lacksRole name="admin">
+	No tienes permiso para ver el contenido de esta página <a class="nav-link" href="LogoutServlet">Iniciar sesión</a>
+</shiro:lacksRole>
+
+
+
+
+
+
+
+
+
+<div class="container-fluid principal">
+
+
 	<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
 		<div class="container-fluid">
 			<a class="navbar-brand mb-0 h1" href="#"><img
@@ -43,12 +59,99 @@
 	</nav>
 
 
+	<div id="new-trip" class="container-fluid ow">
+		
+		
+<shiro:lacksRole name="supervisor">
 
 
-	<h2>Detalles del viaje</h2>
-	<shiro:lacksRole name="employee">
-	No eres empleado
-	</shiro:lacksRole>
+		<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh; ">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#exampleModal">
+				  New Bill
+				</button>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Create new bill</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
+
+									<div class="form-group">
+										<label for="motive"> Motivo: </label> <textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"> </textarea>               
+									</div>
+									
+									
+									<div class="form-group">
+										<label for="amount"> Comprobante: </label>
+										<div class="input-group">
+											<input type="file" name="attachment" id="attachment" class="form-control" />
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label for="amount"> Importe esperado: </label>
+										<div class="input-group">
+											<input type="text" name="amount" id="amount" class="form-control" placeholder="Importe" />
+											<div class="input-group-append">
+												<span class="input-group-text">€</span>
+											</div>
+										</div>
+									</div>
+									<span class="glyphicon glyphicon-calendar"></span>
+									<input type="hidden" name="tripId" value="${trip.tripId}" />	
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">Close</button>
+										<button type="submit" class="btn btn-warning">Create bill</button>
+									</div>
+								</form>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+</shiro:lacksRole>
+
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="trips" class="container-fluid row">
+		
+		
+    <div class="col-6 order-first">		
+		<h2>Detalles del viaje</h2>
+			<shiro:lacksRole name="employee">
+				No eres empleado
+			</shiro:lacksRole>
 	
 		<p>
 			Destino: ${trip.getDestiny()}
@@ -62,10 +165,12 @@
 		<p>
 			Motivo: ${trip.getMotive()}
 		</p>
+	</div>
 		
-		<shiro:lacksRole name="supervisor">
+	<div class="col-6 order-last">
+<shiro:lacksRole name="supervisor">
 		
-		<h3>Crear factura nueva</h3>
+		<h2>Crear factura nueva</h2>
 		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
 			<p>
 				Motivo: <input type="text" name="motive" />
@@ -80,7 +185,11 @@
 				<button type="submit">Crear factura</button>
 			</p>
 		</form>
-		</shiro:lacksRole>
+</shiro:lacksRole>
+	</div>
+		
+</div>
+
 
 	
 

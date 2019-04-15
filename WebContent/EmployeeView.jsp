@@ -34,7 +34,7 @@
 
 
 <shiro:hasRole name="employee">
-<div class="container-fluid principal">
+<div class="container-fluid principal space-between">
 <!-- 	Navigation -->
 	<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
 		<div class="container-fluid">

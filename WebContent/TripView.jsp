@@ -44,10 +44,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="#info">Informacion</a></li>
+					
 					<li class="nav-item">
 						<a class="nav-link" href="#create-receipt">Crear Factura</a>
 					</li>
+					<li class="nav-item"><a class="nav-link" href="#info">Informacion</a></li>
 					<li class="nav-item"><a class="nav-link" href="#receipts">Facturas</a>
 					</li>
 					<li class="nav-item"><shiro:user>
@@ -59,7 +60,7 @@
 	</nav>
 
 
-	<div id="new-trip" class="container-fluid ow">
+	<div id="create-receipt" class="container-fluid">
 		
 		
 <shiro:lacksRole name="supervisor">
@@ -144,54 +145,63 @@
 
 
 
-<div id="trips" class="container-fluid row">
+
+
+
+	
+
+<div  id="info" class="align-items-center">
+<div class="container-fluid d-felx flex-row  text-center " style="height: 100vh;   background-image: linear-gradient(to right, #207ce5 , #fedc44);">
 		
 		
-    <div class="col-6 order-first">		
-		<h2>Detalles del viaje</h2>
+    <div class="p-2 order-first text-center card align-self-center">
+    
+    
+	    <h2 class="card-header">Detalles del viaje</h2>
 			<shiro:lacksRole name="employee">
 				No eres empleado
 			</shiro:lacksRole>
-	
-		<p>
+		<div class="card-body">
+		<p class="card-text">
 			Destino: ${trip.getDestiny()}
 		</p>
-		<p>
+		<p class="card-text">
 			Fecha de inicio: ${trip.getStartDate()}
 		</p>
-		<p>
+		<p class="card-text">
 			Fecha de fin: ${trip.getEndDate()}
 		</p>
-		<p>
+		<p class="card-text">
 			Motivo: ${trip.getMotive()}
 		</p>
-	</div>
+    </div>		
 		
-	<div class="col-6 order-last">
-<shiro:lacksRole name="supervisor">
-		
-		<h2>Crear factura nueva</h2>
-		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data">
-			<p>
-				Motivo: <input type="text" name="motive" />
-			</p>
-			<p>
-				Comprobante: <input type="file" name="attachment" />
-			<p>
-				Importe: <input type="text" name="amount" />
-			</p>
-			<input type="hidden" name="tripId" value="${trip.tripId}" />	
-			<p>
-				<button type="submit">Crear factura</button>
-			</p>
-		</form>
-</shiro:lacksRole>
 	</div>
+</div>
+<!-- 	<div class="p-2 order-last text-center card"> -->
+<%-- <shiro:lacksRole name="supervisor"> --%>
+<!-- 		<div class="card-body"> -->
+<!-- 		<h2 class="card-title">Crear factura nueva</h2> -->
+<!-- 		<form action="CreateReceiptServlet" method="post" enctype="multipart/form-data"> -->
+<!-- 			<p> -->
+<!-- 				Motivo: <input type="text" name="motive" /> -->
+<!-- 			</p> -->
+<!-- 			<p> -->
+<!-- 				Comprobante: <input type="file" name="attachment" /> -->
+<!-- 			<p> -->
+<!-- 				Importe: <input type="text" name="amount" /> -->
+<!-- 			</p> -->
+<%-- 			<input type="hidden" name="tripId" value="${trip.tripId}" />	 --%>
+<!-- 			<p> -->
+<!-- 				<button type="submit">Crear factura</button> -->
+<!-- 			</p> -->
+<!-- 		</form> -->
+<!-- 		</div> -->
+<%-- </shiro:lacksRole> --%>
+<!-- 	</div> -->
 		
 </div>
 
-
-	
 
 		
 <div id="receipts" class="container-fluid">
@@ -199,22 +209,22 @@
 		<table class="table ">
 		  	<thead class="thead-light">
 			<tr> 
-				<th scope="col">Motivo</th>
 				<th scope="col">Importe</th>
 				<th scope="col">Comprobante</th>
+				<th scope="col">Motivo</th>
  			</tr>
   			<c:forEach items="${receipt_list}" var="receipti" varStatus="loop">
   			<tbody  id="accordion">
 				<tr class="accordion-toggle">
   				<tr>
-					<td>${receipti.motive }</td>
-					<td>${receipti.amount }</td>
+					<td>${receipti.amount } €</td>
 					<td>
 					<form action="ReceiptImageView.jsp" action="post">
 						<input type="hidden" name="receiptId" value="${receipti.receiptId}" />
 						<button type="submit">Ver comprobante</button>
 					</form>	
 					</td>
+					<td>${receipti.motive }</td>
  					
   				</tr>
   				</tbody>
@@ -222,7 +232,9 @@
   			</c:forEach>
  		</table>
  		
- 		</div>
- 		</div>
+ 	</div>
+</div>
+ 		
+
 </body>
 </html>

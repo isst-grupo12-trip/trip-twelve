@@ -76,6 +76,13 @@
 						<button type="submit" class="btn btn-outline-dark">Aceptar Viaje</button>
 					</form> 
 					</c:if>
+					<c:if test="${tripi.state == 0}"> 
+						<form action="PreviousStatusServlet" method="post">
+							<input type="hidden" name="tripId" value="${tripi.tripId}" />
+							<input type="hidden" name="isSupervisor" value="${true}" />
+						<button type="submit" class="btn btn-outline-dark">Denegar Viaje</button>
+					</form> 
+					</c:if>
 				<c:if test="${tripi.state == 2}"> 
 					<form action="ForwardStatusServlet" method="post">
 							<input type="hidden" name="tripId" value="${tripi.tripId}" /> 

@@ -1,7 +1,7 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +43,7 @@
 					</li>
 				</shiro:hasRole>
 					<li class="nav-item"><a class="nav-link" href="#info">Informacion</a></li>
-					<li class="nav-item"><a class="nav-link" href="#receipts">Facturas</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="#receipts">Facturas</a></li>
 					<li class="nav-item">
 						<shiro:user>
 							<a class="nav-link" href="LogoutServlet">Logout</a>
@@ -84,7 +83,7 @@
 
 									<div class="form-group">
 										<label for="motive"> Motivo: </label> 
-										<textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"> </textarea>               
+										<textarea name="motive" id="motive" class="form-control" placeholder="Introduzca motivo" rows="3"></textarea>               
 									</div>
 
 									<div class="form-group">
@@ -194,6 +193,7 @@
 				<th scope="col">Importe</th>
 				<th scope="col">Comprobante</th>
 				<th scope="col">Motivo</th>
+				<th scope="col">Editar</th>
  			</tr>
   			<c:forEach items="${receipt_list}" var="receipti" varStatus="loop">
   			<tbody  id="accordion">
@@ -234,7 +234,68 @@
 
 					</td>
 					<td>${receipti.motive}</td>
- 					
+					
+					
+					<td>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdit">Editar comprobante</button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header bg-dark text-white">
+										<h5 class="modal-title" id="exampleModalLabel">Create new bill</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form action="EditReceiptServlet" method="post" enctype="multipart/form-data">
+		
+											<div class="form-group">
+												<label for="motive"> Motivo: </label> 
+												<textarea name="motive" id="motive" class="form-control" rows="3"> ${receipti.motive} </textarea>               
+											</div>
+		
+											<div class="form-group">
+												<label for="attachment"> Comprobante: </label>
+												<div class="input-group">
+													<div class="custom-file">
+														<input type="file" class="custom-file-input" id="attachment" name="attachment" value="" >
+														<label class="custom-file-label" for="attachment">Choose file</label>
+													</div>
+												</div>
+											</div>
+		
+												<div class="form-group">
+												<label for="amount"> Importe esperado: </label>
+												<div class="input-group">
+													<input type="text" name="amount" id="amount" class="form-control" value="${receipti.amount}"/>
+													<div class="input-group-append">
+														<span class="input-group-text">€</span>
+													</div>
+												</div>
+											</div>
+											<span class="glyphicon glyphicon-calendar"></span>
+											<input type="hidden" name="tripId" value="${trip.tripId}" />
+											<input type="hidden" name="receiptId" value="${receipti.receiptId}" />	
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-warning">Edit bill</button>
+											</div>
+										</form>
+		
+									</div>
+		
+								</div>
+							</div>
+						</div>
+					
+					</td>
+					
   				</tr>
   				</tbody>
   				

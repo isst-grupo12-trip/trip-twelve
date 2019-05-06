@@ -245,7 +245,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header bg-dark text-white">
-										<h5 class="modal-title" id="exampleModalLabel">Create new bill</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Edit bill</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -263,7 +263,7 @@
 												<label for="attachment"> Comprobante: </label>
 												<div class="input-group">
 													<div class="custom-file">
-														<input type="file" class="custom-file-input" id="attachment" name="attachment" value="" >
+														<input type="file" class="custom-file-input" id="attachment" name="attachment" >
 														<label class="custom-file-label" for="attachment">Choose file</label>
 													</div>
 												</div>

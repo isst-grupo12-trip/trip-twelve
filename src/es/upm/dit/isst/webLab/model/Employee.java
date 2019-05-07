@@ -1,12 +1,15 @@
 package es.upm.dit.isst.webLab.model;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+@SuppressWarnings("serial")
 @Entity
-public class Employee implements Serializable{
+public class Employee implements Serializable {
 	@Id
 	private String email;
 	private String password;

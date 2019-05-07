@@ -70,6 +70,7 @@ public class ReceiptDAOImplementation implements ReceiptDAO {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Receipt> readAll () {
 		Session session = SessionFactoryService.get().openSession();

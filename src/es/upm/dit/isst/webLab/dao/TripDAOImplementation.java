@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import org.hibernate.Session;
 
-import es.upm.dit.isst.webLab.model.Receipt;
 import es.upm.dit.isst.webLab.model.Trip;
 
 public class TripDAOImplementation implements TripDAO {
@@ -71,6 +70,7 @@ public class TripDAOImplementation implements TripDAO {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Trip> readAll () {
 		Session session = SessionFactoryService.get().openSession();

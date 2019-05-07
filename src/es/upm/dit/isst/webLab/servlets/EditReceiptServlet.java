@@ -33,7 +33,7 @@ import es.upm.dit.isst.webLab.model.Trip;
 public class EditReceiptServlet extends HttpServlet {
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		int receiptId =  Integer.parseInt(req.getParameter( "receiptId" ));		
 		int tripId = Integer.parseInt(req.getParameter("tripId"));
 		

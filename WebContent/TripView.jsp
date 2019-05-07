@@ -252,7 +252,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="EditReceiptServlet" method="get" enctype='multipart/form-data'>
+										<form action="EditReceiptServlet" method="post" enctype='multipart/form-data'>
 											<input type="hidden" name="receiptId" value="${receipti.receiptId}" />	
 											<input type="hidden" name="tripId" value="${trip.tripId}" />
 											<div class="form-group">

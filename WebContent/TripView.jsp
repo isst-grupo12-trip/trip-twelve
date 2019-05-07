@@ -204,10 +204,10 @@
 
 
 						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal1">Ver comprobante</button>
+						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal${receipti.receiptId}">Ver comprobante</button>
 
 						<!-- Modal -->
-						<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="exampleModal${receipti.receiptId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header bg-dark text-white">
@@ -238,10 +238,10 @@
 					
 					<td>
 						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdit">Editar comprobante</button>
+						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdit${receipti.receiptId}${trip.tripId}">Editar comprobante</button>
 						
 						<!-- Modal -->
-						<div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="exampleModalEdit${receipti.receiptId}${trip.tripId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header bg-dark text-white">
@@ -252,8 +252,9 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="EditReceiptServlet" method="post" enctype="multipart/form-data">
-		
+										<form action="EditReceiptServlet" method="get" enctype='multipart/form-data'>
+											<input type="hidden" name="receiptId" value="${receipti.receiptId}" />	
+											<input type="hidden" name="tripId" value="${trip.tripId}" />
 											<div class="form-group">
 												<label for="motive"> Motivo: </label> 
 												<textarea name="motive" id="motive" class="form-control" rows="3"> ${receipti.motive} </textarea>               
@@ -279,8 +280,7 @@
 												</div>
 											</div>
 											<span class="glyphicon glyphicon-calendar"></span>
-											<input type="hidden" name="tripId" value="${trip.tripId}" />
-											<input type="hidden" name="receiptId" value="${receipti.receiptId}" />	
+	
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary"
 													data-dismiss="modal">Close</button>

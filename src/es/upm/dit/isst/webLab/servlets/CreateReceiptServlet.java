@@ -25,11 +25,6 @@ import es.upm.dit.isst.webLab.model.Trip;
 @MultipartConfig
 public class CreateReceiptServlet extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Double amount = -1.0;
 		try {
@@ -39,7 +34,7 @@ public class CreateReceiptServlet extends HttpServlet {
 		}
 		Part filePart = request.getPart("attachment");
 		String motive = request.getParameter("motive");
-		
+
 		TripDAO tdao = TripDAOImplementation.getInstance();
 		
 		InputStream fileContent = filePart.getInputStream();

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import java.lang.Integer;
+import java.util.Arrays;
 import java.util.Collection;
 
 import es.upm.dit.isst.webLab.dao.EmployeeDAO;
@@ -52,9 +53,18 @@ public class EditReceiptServlet extends HttpServlet {
 
 		TripDAO tdao = TripDAOImplementation.getInstance();
 		
-		InputStream fileContent = filePart.getInputStream();
-		byte[] image = IOUtils.readBytesAndClose(fileContent, -1);
-//		byte[] image = receipt.getImage();
+		
+		byte[] image = null;
+		try {
+			InputStream fileContent = filePart.getInputStream();
+			image = IOUtils.readBytesAndClose(fileContent, -1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (image.length == 0) {
+			image = receipt.getImage();
+		}
 		
 		
 		Trip trip = tdao.read(tripId);

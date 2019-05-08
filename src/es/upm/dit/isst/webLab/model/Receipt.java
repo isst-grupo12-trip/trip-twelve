@@ -1,8 +1,10 @@
 package es.upm.dit.isst.webLab.model;
+
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.*;
+
+@SuppressWarnings("serial")
 @Entity
 public class Receipt implements Serializable {
 	@Id

@@ -121,6 +121,13 @@
 										</div>
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="advance"> Reembolso previo: </label>
+									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="showAdvanceValue()" />      
+								</div>
+								<div>
+								<div class="form-group" id="advance_value"></div>
+								</div>
 								<span class="glyphicon glyphicon-calendar"></span>
 								<input type="hidden" name="email" value="${employee.email}" />
 								<div class="modal-footer">
@@ -272,6 +279,16 @@
 	            autoclose: true,
 	        })
 	    })
+	</script>
+	<script>
+		function showAdvanceValue(){
+			console.log("Estamos dentro");
+			var value = document.getElementById("amount").value;
+			document.getElementById("advance_value").innerText = value * 0.25 + " € de adelanto";	
+			console.log(value);
+		}
+	
+	
 	</script>
 	
 </body>

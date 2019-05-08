@@ -5,7 +5,8 @@ import java.util.Collection;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
-public class Supervisor extends Employee{
+@SuppressWarnings("serial")
+public class Supervisor extends Employee {
 	
 	@OneToMany(mappedBy = "supervisor", fetch = FetchType.EAGER)
 	private Collection<Trip> supervisedTrips;

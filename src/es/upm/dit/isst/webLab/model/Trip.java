@@ -9,8 +9,9 @@ import javax.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+@SuppressWarnings("serial")
 @Entity
-public class Trip implements Serializable{
+public class Trip implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)

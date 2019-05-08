@@ -70,6 +70,7 @@ public class EmployeeDAOImplementation implements EmployeeDAO {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Employee> readAll () {
 		Session session = SessionFactoryService.get().openSession();

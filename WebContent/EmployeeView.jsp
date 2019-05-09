@@ -226,21 +226,7 @@
 							</form>
 						</td>
 					</c:if>
-					<c:if test="${tripi.state == -1}">
-<%-- 						<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}"> --%>
-<!-- 							<script type="text/javascript"> -->
-<!-- //  								var id = tripi.tripId; -->
-<!-- 							</script> -->
-<!-- 							<form action="ModalParametersServlet" method="get"> -->
-<%-- 								<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
-<%-- 								<input type="hidden" name="email" value="${employee.email}" /> --%>
-<!-- 								<button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdicion">Editar petición</button> -->
-<!-- 							</form> -->
-<!-- 						</td> -->
-						
-						
-						
-						
+					<c:if test="${tripi.state == -1}">						
 						<td>
 						<!-- Button trigger modal -->
 						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdit${tripi.tripId}">Editar petición</button>
@@ -300,7 +286,7 @@
 								</div>
 								<div class="form-group">
 									<label for="advance"> Reembolso previo: </label>
-									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="showAdvanceValue()" />      
+									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="show()" />      
 								</div>
 								<div>
 								<div class="form-group" id="advance_value"></div>
@@ -320,8 +306,6 @@
 						</div>
 					
 					</td>
-						
-						
 						
 						
 						
@@ -384,14 +368,10 @@
 			var checkbox = document.getElementById("checkbox");
 			var deposit = document.getElementById("deposit");
 			
-			deposit.placeholder = value * alpha;
-			
-			
 			if (checkbox.checked == true) {
-				deposit.style.display = "block";
+				deposit.placeholder = value * alpha;
 			} else {
-				
-				deposit.style.display = "none";
+				deposit.placeholder = "";
 			}	
 		}
 	</script>

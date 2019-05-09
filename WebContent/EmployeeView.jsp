@@ -218,16 +218,104 @@
 						</td>
 					</c:if>
 					<c:if test="${tripi.state == -1}">
-						<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
-							<script type="text/javascript">
-								var id = tripi.tripId;
-							</script>
-							<form action="ModalParametersServlet" method="get">
-								<input type="hidden" name="tripId" value="${tripi.tripId}" />
-								<input type="hidden" name="email" value="${employee.email}" />
-								<button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdicion">Editar petición</button>
-							</form>
-						</td>
+<%-- 						<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}"> --%>
+<!-- 							<script type="text/javascript"> -->
+<!-- //  								var id = tripi.tripId; -->
+<!-- 							</script> -->
+<!-- 							<form action="ModalParametersServlet" method="get"> -->
+<%-- 								<input type="hidden" name="tripId" value="${tripi.tripId}" /> --%>
+<%-- 								<input type="hidden" name="email" value="${employee.email}" /> --%>
+<!-- 								<button type="submit" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdicion">Editar petición</button> -->
+<!-- 							</form> -->
+<!-- 						</td> -->
+						
+						
+						
+						
+						<td>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalEdit${tripi.tripId}">Editar petición</button>
+						
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalEdit${tripi.tripId}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header bg-dark text-white">
+										<h5 class="modal-title" id="exampleModalLabel">Edit Trip Request</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form action="EditTripServlet" method="post">
+										<input type="hidden" name="tripId" value="${tripi.tripId}" />
+										<input type="hidden" name="email" value="${employee.email}" />
+											<div class="form-group">
+									<label for="destination"> Destino: </label> <input type="text" name="destination" id="destination" class="form-control" value="${tripi.destiny}"/>                
+								</div>
+								<div class="form-group ">
+									<label class="control-label " for="startDate"> Fecha de ida: </label> 
+									<div class="input-group">
+									<input class="form-control" id="startDate"
+										name="startDate" value="${tripi.startDate}" type="text" />
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<i class="fa fa-calendar"> </i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group ">
+									<label class="control-label " for="endDate"> Fecha de vuelta: </label> 
+									<div class="input-group">
+										<input class="form-control" id="endDate"  name="endDate" value="${tripi.endDate}" type="text" />
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<i class="fa fa-calendar"> </i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="motive"> Motivo del viaje: </label> <textarea type="text" name="motive" id="motive" class="form-control" rows="3">${tripi.motive}</textarea>               
+								</div>
+								<div class="form-group">
+									<label for="amount"> Importe esperado: </label>
+									<div class="input-group">
+										<input type="text" name="amount" id="amount" class="form-control" value="${tripi.amount}" />
+										<div class="input-group-append">
+											<span class="input-group-text">€</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="advance"> Reembolso previo: </label>
+									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="showAdvanceValue()" />      
+								</div>
+								<div>
+								<div class="form-group" id="advance_value"></div>
+								</div>
+								<span class="glyphicon glyphicon-calendar"></span>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Close</button> 
+										<button type="submit" class="btn btn-warning">Edit Trip</button>
+								</div>
+										</form>
+		
+									</div>
+		
+								</div>
+							</div>
+						</div>
+					
+					</td>
+						
+						
+						
+						
+						
 						<td>Denegado</td>
 						
 				

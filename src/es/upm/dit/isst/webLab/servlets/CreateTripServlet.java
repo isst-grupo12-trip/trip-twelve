@@ -61,7 +61,7 @@ public class CreateTripServlet extends HttpServlet {
 		TripDAO tdao = TripDAOImplementation.getInstance();
 		tdao.create( trip );
 		
-		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + email );
+		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + email + "#trips");
 	}
 
 }

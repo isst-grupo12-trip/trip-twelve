@@ -137,6 +137,7 @@
 										</div>
 									</div>   
 								</div>
+								
 								<span class="glyphicon glyphicon-calendar"></span>
 								<input type="hidden" name="email" value="${employee.email}" />
 								<div class="modal-footer">
@@ -284,12 +285,20 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="advance"> Reembolso previo: </label>
-									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="show()" />      
-								</div>
-								<div>
-								<div class="form-group" id="advance_value"></div>
+								<!-- Checkbox for deposit -->
+								<div class="form-group">									
+									<label for="checkbox" class="container"> 
+										<b class="emphasize">Reembolso previo:</b>
+										<input type="checkbox" name="checkbox" id="checkbox" class="checkbox" onclick="show()">
+										<span class="checkmark"></span>
+									</label>
+									<div class="input-group">
+										<input type="text" name="deposit" id="deposit" class="form-control"
+										readonly onmousedown="return false;" /> <!-- Impide selección/modificación -->
+										<div class="input-group-append">
+											<span class="input-group-text">€</span>
+										</div>
+									</div>   
 								</div>
 								<span class="glyphicon glyphicon-calendar"></span>
 								<div class="modal-footer">

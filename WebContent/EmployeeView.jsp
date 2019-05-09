@@ -279,7 +279,7 @@
 								<div class="form-group">
 									<label for="amount"> Importe esperado: </label>
 									<div class="input-group">
-										<input type="text" name="amount" id="amount" class="form-control" value="${tripi.amount}" />
+										<input type="text" name="amount" id="amount2" class="form-control" value="${tripi.amount}" />
 										<div class="input-group-append">
 											<span class="input-group-text">€</span>
 										</div>
@@ -289,11 +289,11 @@
 								<div class="form-group">									
 									<label for="checkbox" class="container"> 
 										<b class="emphasize">Reembolso previo:</b>
-										<input type="checkbox" name="checkbox" id="checkbox" class="checkbox" onclick="show()">
+										<input type="checkbox" name="checkbox" id="checkbox2" class="checkbox" onclick="show2()">
 										<span class="checkmark"></span>
 									</label>
 									<div class="input-group">
-										<input type="text" name="deposit" id="deposit" class="form-control"
+										<input type="text" name="deposit" id="deposit2" class="form-control"
 										readonly onmousedown="return false;" /> <!-- Impide selección/modificación -->
 										<div class="input-group-append">
 											<span class="input-group-text">€</span>
@@ -376,6 +376,20 @@
 			var value = document.getElementById("amount").value;
 			var checkbox = document.getElementById("checkbox");
 			var deposit = document.getElementById("deposit");
+			
+			if (checkbox.checked == true) {
+				deposit.placeholder = value * alpha;
+			} else {
+				deposit.placeholder = "";
+			}	
+		}
+	</script>
+	<script type="text/javascript">
+		function show2(){
+			var alpha = .3; // Proporción de reembolso previo
+			var value = document.getElementById("amount2").value;
+			var checkbox = document.getElementById("checkbox2");
+			var deposit = document.getElementById("deposit2");
 			
 			if (checkbox.checked == true) {
 				deposit.placeholder = value * alpha;

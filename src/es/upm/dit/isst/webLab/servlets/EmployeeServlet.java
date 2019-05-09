@@ -25,7 +25,7 @@ public class EmployeeServlet extends HttpServlet {
 		Employee employee = edao.read(emailEmployee);
 		req.getSession().setAttribute("employee", employee);
 		
-		req.getSession().setAttribute( "trip_list", employee.getTrips());
+		req.getSession().setAttribute("trip_list", employee.getTrips());
 		
 		getServletContext().getRequestDispatcher( "/EmployeeView.jsp" ).forward( req, resp );
 	}

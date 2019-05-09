@@ -11,6 +11,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<link rel="stylesheet" href="css/checkbox.css">
 <link rel="stylesheet" href="css/employeestyle.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
@@ -121,12 +122,20 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="advance"> Reembolso previo: </label>
-									<input type="checkbox" name="advance" id="advance" class="form-control" onclick="showAdvanceValue()" />      
-								</div>
-								<div>
-								<div class="form-group" id="advance_value"></div>
+								<!-- Checkbox for deposit -->
+								<div class="form-group">									
+									<label for="checkbox" class="container"> 
+										<b class="emphasize">Reembolso previo:</b>
+										<input type="checkbox" name="checkbox" id="checkbox" class="checkbox" onclick="show()">
+										<span class="checkmark"></span>
+									</label>
+									<div class="input-group">
+										<input type="text" name="deposit" id="deposit" class="form-control"
+										readonly onmousedown="return false;" /> <!-- Impide selección/modificación -->
+										<div class="input-group-append">
+											<span class="input-group-text">€</span>
+										</div>
+									</div>   
 								</div>
 								<span class="glyphicon glyphicon-calendar"></span>
 								<input type="hidden" name="email" value="${employee.email}" />
@@ -280,16 +289,23 @@
 	        })
 	    })
 	</script>
-	<script>
-		function showAdvanceValue(){
-			console.log("Estamos dentro");
+	<script type="text/javascript">
+		function show(){
+			var alpha = .3; // Proporción de reembolso previo
 			var value = document.getElementById("amount").value;
-			document.getElementById("advance_value").innerText = value * 0.25 + " € de adelanto";	
-			console.log(value);
+			var checkbox = document.getElementById("checkbox");
+			var deposit = document.getElementById("deposit");
+			
+			deposit.placeholder = value * alpha;
+			
+			
+			if (checkbox.checked == true) {
+				deposit.style.display = "block";
+			} else {
+				
+				deposit.style.display = "none";
+			}	
 		}
-	
-	
 	</script>
-	
 </body>
 </html>

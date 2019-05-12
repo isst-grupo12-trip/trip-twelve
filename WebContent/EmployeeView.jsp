@@ -46,10 +46,10 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#new-trip">New Trip</a>
+						<a class="nav-link" href="#new-trip">Nuevo Viaje</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#trips">Trips</a>
+						<a class="nav-link" href="#trips">Viajes</a>
 					</li>
 					<li class="nav-item">
 						<shiro:user>
@@ -67,7 +67,7 @@
 		<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh; ">
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#exampleModal">
-			  New Trip
+			  Nuevo Viaje
 			</button>
 			
 			<!-- Modal -->
@@ -75,8 +75,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">New Trip
-								Request</h5>
+							<h5 class="modal-title" id="exampleModalLabel">Nueva Solicitud de Viaje</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -142,9 +141,8 @@
 								<input type="hidden" name="email" value="${employee.email}" />
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button> 
-										<button type="submit" class="btn btn-warning">Save
-										changes</button>
+										data-dismiss="modal">Cerrar</button> 
+										<button type="submit" class="btn btn-warning">Guardar Cambios</button>
 								</div>
 							</form>
 						</div>
@@ -156,7 +154,7 @@
 </div>
 <div id="trips" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
-		<table class="table ">
+		<table class="table">
 		  	<thead class="thead-light">
 			   	 <tr>
 			   	   <th scope="col">#</th>
@@ -177,8 +175,12 @@
 					<tr class="accordion-toggle">
 					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}" scope="row">${loop.index +1}</td>
 					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.destiny }</td>
-					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.startDate }</td>
-					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.endDate }</td>
+					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+					<c:if test="${tripi.startDate.getDate() < 10}">0</c:if>${tripi.startDate.getDate()}/<c:if test="${tripi.startDate.getMonth()+1 < 10}">0</c:if>${tripi.startDate.getMonth()+1}/${tripi.startDate.getYear()+1900}
+					</td>
+					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">
+					<c:if test="${tripi.endDate.getDate() < 10}">0</c:if>${tripi.endDate.getDate()}/<c:if test="${tripi.endDate.getMonth()+1 < 10}">0</c:if>${tripi.endDate.getMonth()+1}/${tripi.endDate.getYear()+1900}
+					</td>
 					<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">${tripi.amount } €</td>
 					<c:if test="${tripi.state == 0}"> 
 						<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">Pendiente de aceptacion</td>
@@ -237,7 +239,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header bg-dark text-white">
-										<h5 class="modal-title" id="exampleModalLabel">Edit Trip Request</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Editar Solicitud de Viaje</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -254,7 +256,7 @@
 									<label class="control-label " for="startDate"> Fecha de ida: </label> 
 									<div class="input-group">
 									<input class="form-control" id="startDate"
-										name="startDate" value="${tripi.startDate}" type="text" />
+										name="startDate" value="${tripi.startDate.getDate()}/${tripi.startDate.getMonth()+1}/${tripi.startDate.getYear()+1900}" type="text" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<i class="fa fa-calendar"> </i>
@@ -265,7 +267,7 @@
 								<div class="form-group ">
 									<label class="control-label " for="endDate"> Fecha de vuelta: </label> 
 									<div class="input-group">
-										<input class="form-control" id="endDate"  name="endDate" value="${tripi.endDate}" type="text" />
+										<input class="form-control" id="endDate"  name="endDate" value="${tripi.endDate.getDate()}/${tripi.endDate.getMonth()+1}/${tripi.endDate.getYear()+1900}" type="text" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<i class="fa fa-calendar"> </i>
@@ -274,10 +276,10 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="motive"> Motivo del viaje: </label> <textarea type="text" name="motive" id="motive" class="form-control" rows="3">${tripi.motive}</textarea>               
+									<label for="motive"> Motivo del viaje: </label> <textarea name="motive" id="motive" class="form-control" rows="3">${tripi.motive}</textarea>               
 								</div>
 								<div class="form-group">
-									<label for="amount"> Importe esperado: </label>
+									<label for="amount2"> Importe esperado: </label>
 									<div class="input-group">
 										<input type="text" name="amount" id="amount2" class="form-control" value="${tripi.amount}" />
 										<div class="input-group-append">
@@ -287,7 +289,7 @@
 								</div>
 								<!-- Checkbox for deposit -->
 								<div class="form-group">									
-									<label for="checkbox" class="container"> 
+									<label for="checkbox2" class="container"> 
 										<b class="emphasize">Reembolso previo:</b>
 										<input type="checkbox" name="checkbox" id="checkbox2" class="checkbox" onclick="show2()">
 										<span class="checkmark"></span>
@@ -303,8 +305,8 @@
 								<span class="glyphicon glyphicon-calendar"></span>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button> 
-										<button type="submit" class="btn btn-warning">Edit Trip</button>
+										data-dismiss="modal">Cerrar</button> 
+										<button type="submit" class="btn btn-warning">Editar Viaje</button>
 								</div>
 										</form>
 		
@@ -357,13 +359,13 @@
 	        var date_input2=$('input[name="endDate"]');//our date input has the name "endDate"
 	        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 	        date_input.datepicker({
-	            format: 'mm/dd/yyyy',
+	            format: 'dd/mm/yyyy',
 	            container: container,
 	            todayHighlight: true,
 	            autoclose: true,
 	        })
 	        date_input2.datepicker({
-	            format: 'mm/dd/yyyy',
+	            format: 'dd/mm/yyyy',
 	            container: container,
 	            todayHighlight: true,
 	            autoclose: true,
@@ -386,15 +388,15 @@
 	</script>
 	<script type="text/javascript">
 		function show2(){
-			var alpha = .3; // Proporción de reembolso previo
-			var value = document.getElementById("amount2").value;
-			var checkbox = document.getElementById("checkbox2");
-			var deposit = document.getElementById("deposit2");
+			var alpha2 = .3; // Proporción de reembolso previo
+			var value2 = document.getElementById("amount2").value;
+			var checkbox2 = document.getElementById("checkbox2");
+			var deposit2 = document.getElementById("deposit2");
 			
-			if (checkbox.checked == true) {
-				deposit.placeholder = value * alpha;
+			if (checkbox2.checked == true) {
+				deposit2.placeholder = value2 * alpha2;
 			} else {
-				deposit.placeholder = "";
+				deposit2.placeholder = "";
 			}	
 		}
 	</script>

@@ -34,9 +34,9 @@ public class ForwardStatusServlet extends HttpServlet {
 		System.out.println(supervisorEmail);
 		tripdao.update(trip);
 		if (isSupervisor) {
-			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail);
+			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail + "#trips");
 		} else {
-			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + employeeEmail);
+			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + employeeEmail + "#trips");
 		}
 	}
 	

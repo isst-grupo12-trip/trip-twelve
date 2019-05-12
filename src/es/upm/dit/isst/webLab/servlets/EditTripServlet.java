@@ -38,7 +38,7 @@ public class EditTripServlet extends HttpServlet {
 			startDate = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "startDate" ));
 		} catch (ParseException e1) {
 			try {
-	            startDate = new SimpleDateFormat("yyyy-dd-MM hh:mm:ss").parse(req.getParameter("startDate"));
+	            startDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(req.getParameter("startDate"));
 			} catch (ParseException e2) {
 				e2.printStackTrace();
 			}
@@ -49,7 +49,7 @@ public class EditTripServlet extends HttpServlet {
 			endDate = new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter( "endDate" ));
 		} catch (ParseException e) {
 			try {
-	            endDate = new SimpleDateFormat("yyyy-dd-MM hh:mm:ss").parse(req.getParameter("endDate"));
+	            endDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(req.getParameter("endDate"));
 			} catch (ParseException e2) {
 				e2.printStackTrace();
 			}
@@ -77,6 +77,6 @@ public class EditTripServlet extends HttpServlet {
 	//	TripDAO tdao = TripDAOImplementation.getInstance();
 		tripdao.update( trip );
 		
-		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + email );
+		resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email=" + email + "#trips");
 	}
 }

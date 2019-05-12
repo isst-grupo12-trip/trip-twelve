@@ -27,7 +27,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="#trips">Trips</a>
+						<a class="nav-link" href="#trips">Viajes</a>
 					</li>
 					<li class="nav-item">
 						<shiro:user>
@@ -89,6 +89,9 @@
 							<input type="hidden" name="isSupervisor" value="${true}" />
 						<button type="submit" class="btn btn-outline-dark">Aceptar Reintegro</button> 
 						</form> 
+				</c:if>
+				<c:if test="${tripi.state == 3}">
+						Finalizado
 				</c:if>
 				</td>
 				<td data-toggle="collapse" data-target="#collapseTwo${tripi.tripId}">

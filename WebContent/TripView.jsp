@@ -64,7 +64,7 @@
 		<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh; ">
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-warning btn-circle btn-xl" data-toggle="modal" data-target="#exampleModal">
-				  New Bill
+				Nueva Factura
 				</button>
 				
 				<!-- Modal -->
@@ -72,7 +72,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">New bill</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Nueva Factura</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -110,7 +110,7 @@
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary"
 											data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-warning">Create bill</button>
+										<button type="submit" class="btn btn-warning">Crear Factura</button>
 									</div>
 								</form>
 
@@ -160,7 +160,7 @@
 	    </div>
 	    
 			<shiro:hasRole name="supervisor">
-				<h6 style="margin-bottom:5px; margin-top:5px"> Eres supervisor </h6>
+				<h6 style="margin-bottom:5px; margin-top:5px"> Eres supervisor de este viaje </h6>
 			</shiro:hasRole>
 			
 		<div class="card-body">
@@ -168,10 +168,13 @@
 			Destino: ${trip.getDestiny()}
 		</p>
 		<p class="card-text">
-			Fecha de inicio: ${trip.getStartDate()}
+			Fecha de inicio:
+			<c:if test="${trip.startDate.getDate() < 10}">0</c:if>${trip.startDate.getDate()}/<c:if test="${trip.startDate.getMonth()+1 < 10}">0</c:if>${trip.startDate.getMonth()+1}/${trip.startDate.getYear()+1900}
+			
 		</p>
 		<p class="card-text">
-			Fecha de fin: ${trip.getEndDate()}
+			Fecha de fin:
+			<c:if test="${trip.endDate.getDate() < 10}">0</c:if>${trip.endDate.getDate()}/<c:if test="${trip.endDate.getMonth()+1 < 10}">0</c:if>${trip.endDate.getMonth()+1}/${trip.endDate.getYear()+1900}
 		</p>
 		<p class="card-text">
 			Motivo: ${trip.getMotive()}
@@ -187,7 +190,7 @@
 		
 <div id="receipts" class="container-fluid">
 	<div class="row justify-content-center align-items-center" id="loginForm" style="height: 100vh">
-		<table class="table ">
+		<table class="table">
 		  	<thead class="thead-light">
 			<tr> 
 				<th scope="col">Importe</th>
@@ -211,7 +214,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header bg-dark text-white">
-										<h5 class="modal-title" id="exampleModalLabel">Receipt</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Comprobante de Factura</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -283,8 +286,8 @@
 	
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Close</button>
-												<button type="submit" class="btn btn-warning">Edit bill</button>
+													data-dismiss="modal">Cerrar</button>
+												<button type="submit" class="btn btn-warning">Editar Factura</button>
 											</div>
 										</form>
 		

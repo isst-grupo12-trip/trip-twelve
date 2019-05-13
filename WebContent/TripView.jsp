@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="css/detailsstyle.css">
+<link rel="stylesheet" href="CSS/detailsstyle.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
@@ -196,7 +196,9 @@
 				<th scope="col">Importe</th>
 				<th scope="col">Comprobante</th>
 				<th scope="col">Motivo</th>
+				<c:if test="${trip.state == 1}">
 				<th scope="col">Editar</th>
+				</c:if>
  			</tr>
   			<c:forEach items="${receipt_list}" var="receipti" varStatus="loop">
   			<tbody  id="accordion">
@@ -238,6 +240,7 @@
 					</td>
 					<td>${receipti.motive}</td>
 					
+					<c:if test="${trip.state == 1}">
 					
 					<td>
 						<!-- Button trigger modal -->
@@ -298,6 +301,7 @@
 						</div>
 					
 					</td>
+					</c:if>
 					
   				</tr>
   				</tbody>

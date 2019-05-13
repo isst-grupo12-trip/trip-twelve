@@ -1,0 +1,56 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+.custom-navbar  {
+    background: rgba(255, 255, 255, 0.9);
+
+}
+.form-custom {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.principal{
+	background-image: linear-gradient(-128deg, rgba(255, 181, 32, 0.93) 3%, rgba(239, 39, 153, 0.93) 88%, rgba(237, 18, 171, 0.93) 100%),
+	url('../img/background.jpg'); 
+	background-repeat: no-repeat; 
+	background-size: cover; 
+	background-position: center center;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+    font-size: 12px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 6px;
+    line-height: 1.42857;
+}
+.modal-header{
+	    text-align: center;
+	    background-color:#ffc107;
+}
+
+.x3 {
+  min-width: 90% !important;
+}
+
+
+.modal-content{display:inline-block;}

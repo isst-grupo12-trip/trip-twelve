@@ -30,8 +30,7 @@ public class EditTripServlet extends HttpServlet {
 		int tripId = Integer.parseInt(req.getParameter( "tripId" ));
 		
 		TripDAO tripdao = TripDAOImplementation.getInstance();
-		Trip trip = tripdao.read(tripId);
-		
+		Trip trip = tripdao.read(tripId);		
 		String destiny = req.getParameter( "destination" );
 		Date startDate = null;
 		try {

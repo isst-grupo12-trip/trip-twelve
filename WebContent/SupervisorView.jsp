@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="css/employeestyle.css">
+<link rel="stylesheet" href="CSS/employeestyle.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
@@ -88,6 +88,13 @@
 							<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
 							<input type="hidden" name="isSupervisor" value="${true}" />
 						<button type="submit" class="btn btn-outline-dark">Aceptar Reintegro</button> 
+						</form> 
+				</c:if>
+				<c:if test="${tripi.state == 2}"> 
+					<form action="PreviousStatusServlet" method="post">
+							<input type="hidden" name="tripId" value="${tripi.tripId}" /> 
+							<input type="hidden" name="isSupervisor" value="${true}" />
+						<button type="submit" class="btn btn-outline-dark">Rechazar Reintegro</button> 
 						</form> 
 				</c:if>
 				<c:if test="${tripi.state == 3}">

@@ -29,14 +29,14 @@ public class PreviousStatusServlet extends HttpServlet {
 		TripDAO tripdao = TripDAOImplementation.getInstance();
 		trip = tripdao.read(tripId);
 		System.out.println(trip.getState());
-		trip.setState(-1);
+		trip.setState(trip.getState() - 1);
 		String supervisorEmail = trip.getTraveller().getSupervisor();
 		System.out.println(supervisorEmail);
 		tripdao.update(trip);
 		if (isSupervisor) {
-			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail);
+			resp.sendRedirect( req.getContextPath() + "/SupervisorServlet?email="  + supervisorEmail + "#trips");
 		} else {
-			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + employeeEmail);
+			resp.sendRedirect( req.getContextPath() + "/EmployeeServlet?email="  + employeeEmail + "#trips");
 		}
 	}
 	
